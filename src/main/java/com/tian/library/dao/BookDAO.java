@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -20,7 +21,7 @@ public class BookDAO {
 		this.dataSource = dataSource;
 	}
 
-	public int addBook(Book book) {
+	public int add(Book book) {
 		String sql = """
 				INSERT INTO books
 				(isbn, title, author, publisher, category,
@@ -44,16 +45,38 @@ public class BookDAO {
 		return 0;
 	}
 
-	public void updateBook(Book book, String isbn) {
-		String sql = "UPDATE books SET total_quantity = ? WHERE isbn = ?";
-		Book foundBook = findByIsbn(isbn);
+	public int updateBook(Book book) {
+		String sql = """
+				UPDATE books
+				SET
+				    isbn = ?,
+				    title = ?,
+				    author = ?,
+				    publisher = ?,
+				    category = ?
+				WHERE id = ?;
+					""";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setString(1, book.getIsbn());
+			pstmt.setString(2, book.getTitle());
+			pstmt.setString(3, book.getAuthor());
+			pstmt.setString(4, book.getPublisher());
+			pstmt.setString(5, book.getCategory());
+			pstmt.setInt(6, book.getId());
+			return pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+
 	}
 
-	public int deleteBook(String isbn) {
-		String sql = "DELETE FROM books WHERE isbn = ?";
+	public int deleteBook(int bookId) {
+		String sql = "DELETE FROM books WHERE id = ?";
 
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-			pstmt.setString(1, isbn);
+			pstmt.setInt(1, bookId);
 
 			return pstmt.executeUpdate();
 
@@ -83,10 +106,10 @@ public class BookDAO {
 		return null;
 	}
 
-	public ArrayList<Book> findAll() {
+	public List<Book> findAll() {
 		System.out.println("使用findAll功能");
 		String sql = "SELECT * FROM library_management.books";
-		ArrayList<Book> bookList = new ArrayList<Book>();
+		List<Book> bookList = new ArrayList<Book>();
 
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -104,9 +127,9 @@ public class BookDAO {
 		return bookList;
 	}
 
-	public ArrayList<Book> findByTitle(String title) {
+	public List<Book> findByTitle(String title) {
 		String sql = "SELECT * FROM books WHERE title LIKE ?";
-		ArrayList<Book> bookList = new ArrayList<Book>();
+		List<Book> bookList = new ArrayList<Book>();
 		System.out.println("使用findByTitle功能");
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setString(1, "%" + title + "%");
@@ -132,7 +155,7 @@ public class BookDAO {
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				System.out.println("有資料讀取中");
 				book = new Book(rs.getInt("id"), rs.getString("isbn"), rs.getString("title"), rs.getString("author"),
 						rs.getString("publisher"), rs.getString("category"), rs.getInt("total_quantity"),
@@ -153,27 +176,47 @@ public class BookDAO {
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
-			if (row == 0) {
-				return false;
-			}
+			return row > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
-		return true;
+		
 	}
-	public boolean increaseAvailableQuantity(int bookId) {
-		String sql="""
-				UPDATE books SET available_quantity = available_quantity + 1 WHERE id = ? 
+	
+	public boolean decAvailableQuantity(Connection conn, int bookId) throws SQLException {
+		String sql = """
+				UPDATE books SET available_quantity = available_quantity-1 WHERE id = ? AND available_quantity > 0
 				""";
-		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);){
+		try(PreparedStatement ps = conn.prepareStatement(sql)){
+			ps.setInt(1, bookId);
+			
+			return ps.executeUpdate() > 0;
+		}
+		
+	}
+
+	public boolean increaseAvailableQuantity(int bookId) {
+		String sql = """
+				UPDATE books SET available_quantity = available_quantity + 1 WHERE id = ? AND available_quantity < total_quantity
+				""";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
-			if(row==0) {
-				return false;
-			}
-		}catch(SQLException e) {
+			return row > 0;
+		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
-		return true;
+	}
+	public boolean increaseAvailableQuantity  (Connection conn, int bookId) throws SQLException {
+		String sql = """
+				UPDATE books SET available_quantity = available_quantity + 1 WHERE id = ? AND available_quantity < total_quantity
+				""";
+		try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setInt(1, bookId);
+			int row = pstmt.executeUpdate();
+			return row > 0;
+		} 
 	}
 }
