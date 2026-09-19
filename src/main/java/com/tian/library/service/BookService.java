@@ -1,6 +1,8 @@
 package com.tian.library.service;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -12,63 +14,101 @@ public class BookService {
 	public BookService(BookDAO bookDAO) {
 		this.bookDAO = bookDAO;
 	}
-	public boolean add(String isbn, String title, String author, String publisher, String category, int totalQuantity,
-			int availableQuantity) {
-		Book book = new Book(isbn, title, author, publisher, category, totalQuantity, availableQuantity);
-		return bookDAO.addBook(book) > 0;
-	
-	}
-	public boolean update(String isbn) {
-		Book book = bookDAO.findByIsbn(isbn);
-		if(book != null) {
-			//使用者輸入新的資料
-			bookDAO.updateBook(book, isbn);
-		}else {
+	public boolean add(Book book) {
+		
+		if (book == null) {
 			return false;
 		}
-		return true;
-	}
-	public boolean delete(String isbn) {
-		return bookDAO.deleteBook(isbn) > 0;
-	}
-	
-	public ArrayList<Book> findByTitle(String title) {
-		ArrayList<Book> bookList = bookDAO.findByTitle(title);
-
-		for (Book book : bookList) {
-			System.out.println(book);
+		
+		if(book.getIsbn()==null || book.getIsbn().isBlank()) {
+			return false;
 		}
+		if(book.getTitle()==null || book.getTitle().isBlank()) {
+			return false;
+		}
+		if (book.getAuthor() == null || book.getAuthor().isBlank()) {
+		    return false;
+		}
+		if(book.getTotalQuantity()<=0) {
+			return false;
+		}
+		// 如果有同樣的isbn就不能新增
+		if(bookDAO.findByIsbn(book.getIsbn())!=null) {
+			return false;
+		}
+		// 可借數量=館藏數量
+		book.setAvailableQuantity(book.getTotalQuantity());
 
-		return bookList;
-	}
+		return bookDAO.add(book) > 0;
 	
-	public boolean findByIsbn(String isbn) {
-		Book book = bookDAO.findByIsbn(isbn);
+	}
+	public boolean update(Book book) {
+		
 		if(book == null) {
 			return false;
 		}
-		System.out.println(book);
-		return true;
-	}
-	public ArrayList<Book> findAll() {
-		ArrayList<Book> bookList = bookDAO.findAll();
-		for (Book book : bookList) {
-			System.out.println(book);
+
+		if(book.getId()<=0) {
+			return false;
 		}
-		return bookList;
+		
+		if (book.getIsbn() == null || book.getIsbn().isBlank()) {
+		    return false;
+		}
+		
+
+		if (book.getTitle() == null || book.getTitle().isBlank()) {
+		    return false;
+		}
+		
+		if (book.getAuthor() == null || book.getAuthor().isBlank()) {
+		    return false;
+		}
+		Book foundBook = bookDAO.findById(book.getId());
+		if(foundBook==null) {
+			return false;
+		}
+		// ISBN 不能跟其他書重複
+		Book sameIsbn = bookDAO.findByIsbn(book.getIsbn());
+		if(sameIsbn != null && sameIsbn.getId() != book.getId()) {
+			return false;
+		}
+
+
+		return bookDAO.updateBook(book)>0;
+	}
+	public boolean delete(int bookId) {
+		return bookDAO.deleteBook(bookId) > 0;
+	}
+	
+	public List<Book> findByTitle(String title) {
+		return bookDAO.findByTitle(title);
+	}
+	
+	public Book findByIsbn(String isbn) {
+		return bookDAO.findByIsbn(isbn);
+	}
+	public List<Book> findAll() {
+		return bookDAO.findAll();
 	}
 	
 	public Book findById(int bookId) {
-		Book book = bookDAO.findById(bookId);
-		System.out.println(book.getId()+book.getAuthor()+book.getTitle());
-		return book;
+		return bookDAO.findById(bookId);
 	}
 	
 	public boolean decAvailableQuantity(int bookId) {
+		
 		return bookDAO.decAvailableQuantity(bookId);
+	}
+	public boolean decAvailableQuantity(Connection conn, int bookId) throws SQLException {
+		
+		return bookDAO.decAvailableQuantity(conn, bookId);
 	}
 	
 	public boolean increaseAvailableQuantity(int bookId) {
 		return bookDAO.increaseAvailableQuantity(bookId);
+	}
+	public boolean increaseAvailableQuantity(Connection conn, int bookId) throws SQLException{
+		return bookDAO.increaseAvailableQuantity(conn, bookId);
 	}
 }
