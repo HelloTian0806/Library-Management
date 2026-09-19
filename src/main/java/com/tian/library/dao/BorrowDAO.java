@@ -39,6 +39,24 @@ public class BorrowDAO {
 		}
 		return 0;
 	}
+	
+	public int add(Connection conn, Borrow borrow) throws SQLException {
+		String sql ="""
+				INSERT INTO borrows (member_id, book_id, borrow_date, due_date, status) VALUES(?,?,?,?,?);
+				""";
+		
+		try (PreparedStatement ps = conn.prepareStatement(sql)){
+			ps.setInt(1, borrow.getMemberId());
+			ps.setInt(2, borrow.getBookId());
+			ps.setDate(3, java.sql.Date.valueOf(borrow.getBorrowDate()));
+			ps.setDate(4, java.sql.Date.valueOf(borrow.getDueDate()));
+			ps.setString(5, borrow.getStatus().name());
+			
+			return ps.executeUpdate();
+		}
+		
+		
+	}
 
 	public Borrow findById(int borrowId) {
 		String sql = """
@@ -113,19 +131,16 @@ public class BorrowDAO {
 		}
 		
 	}
-	public boolean returnBook(int borrowId, LocalDate returnDate) {
+	public boolean returnBook(Connection conn, int borrowId, LocalDate returnDate) throws SQLException{
 		String sql = """
 				UPDATE borrows SET status = ? , return_date = ? WHERE id = ?
 				""";
-		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
+		try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setString(1, BorrowStatus.RETURNED.name());
 			pstmt.setDate(2, java.sql.Date.valueOf(returnDate));
 			pstmt.setInt(3, borrowId);
 			int row = pstmt.executeUpdate();
 			return row > 0;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
 		}
 	}
 }
