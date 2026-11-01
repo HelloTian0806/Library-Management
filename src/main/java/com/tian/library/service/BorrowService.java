@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.springframework.stereotype.Service;
 
 import com.tian.library.dao.BorrowDAO;
+import com.tian.library.dto.BorrowResponse;
 import com.tian.library.entity.Book;
 import com.tian.library.entity.Borrow;
 import com.tian.library.entity.BorrowStatus;
@@ -116,6 +117,10 @@ public class BorrowService {
 
 	public Borrow findById(int borrowId) {
 		return borrowDAO.findById(borrowId);
+	}
+	
+	public List<BorrowResponse> findMemberById(int memberId) {
+		return borrowDAO.findByMemberId(memberId);
 	}
 
 	public List<Borrow> findAll() {

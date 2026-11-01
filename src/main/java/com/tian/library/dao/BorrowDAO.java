@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
+import com.tian.library.dto.BorrowResponse;
 import com.tian.library.entity.Borrow;
 import com.tian.library.entity.BorrowStatus;
 
@@ -72,11 +73,44 @@ public class BorrowDAO {
 						rs.getDate("borrow_date").toLocalDate(), rs.getDate("due_date").toLocalDate(),
 						returnDate == null ? null : returnDate.toLocalDate(),
 						BorrowStatus.valueOf(rs.getString("status")));
+				
+				borrow.setStatus(calculateStatus(borrow));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return borrow;
+	}
+	
+	public List<BorrowResponse> findByMemberId(int memberId) {
+		String sql = """
+				SELECT br.id, b.title as book_title, br.borrow_date, br.due_date, br.return_date, br.status
+				FROM borrows br JOIN books b ON br.book_id = b.id
+				WHERE br.member_id = ?
+				""";
+		List<BorrowResponse> borrowList = new ArrayList<BorrowResponse>();
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setInt(1, memberId);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				java.sql.Date returnDate = rs.getDate("return_date");
+				
+				BorrowResponse borrowResponse = new BorrowResponse(
+						rs.getInt("id"),
+						rs.getString("book_title"), 
+						rs.getDate("borrow_date").toLocalDate(),
+						rs.getDate("due_date").toLocalDate(),
+						returnDate == null ? null : returnDate.toLocalDate(),
+						BorrowStatus.valueOf(rs.getString("status")));
+				
+				borrowResponse.setStatus(calculateStatus(borrowResponse));
+				
+				borrowList.add(borrowResponse);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return borrowList;
 	}
 
 	public List<Borrow> findAll() {
@@ -93,6 +127,9 @@ public class BorrowDAO {
 						rs.getDate("borrow_date").toLocalDate(), rs.getDate("due_date").toLocalDate(),
 						returnDate == null ? null : returnDate.toLocalDate(),
 						BorrowStatus.valueOf(rs.getString("status")));
+				
+				borrow.setStatus(calculateStatus(borrow));
+				
 				borrowList.add(borrow);
 			}
 		} catch (SQLException e) {
@@ -142,5 +179,69 @@ public class BorrowDAO {
 			int row = pstmt.executeUpdate();
 			return row > 0;
 		}
+	}
+	
+	public int countActiveBorrows() {
+		String sql = """
+				SELECT count(*) FROM borrows WHERE return_date IS NULL
+				 """;
+		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("count(*)");
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public int countOverdueBorrows() {
+		String sql = """
+				SELECT count(*) FROM borrows WHERE status = "OVERDUED"
+				 """;
+		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("count(*)");
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public BorrowStatus calculateStatus(BorrowResponse borrowResponse) {
+		
+		if (borrowResponse.getStatus() == BorrowStatus.RETURNED) {
+			return BorrowStatus.RETURNED;
+		}
+		
+		if (LocalDate.now().isAfter(borrowResponse.getDueDate())) {
+			return BorrowStatus.OVERDUE;
+		}
+		
+		return BorrowStatus.BORROWED;
+	}
+	
+	public BorrowStatus calculateStatus(Borrow borrow) {
+		
+		if (borrow.getStatus() == BorrowStatus.RETURNED) {
+			return BorrowStatus.RETURNED;
+		}
+		
+		if (LocalDate.now().isAfter(borrow.getDueDate())) {
+			return BorrowStatus.OVERDUE;
+		}
+		
+		return BorrowStatus.BORROWED;
 	}
 }

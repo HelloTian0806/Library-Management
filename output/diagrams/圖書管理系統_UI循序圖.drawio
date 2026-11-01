@@ -1,0 +1,1768 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="ui-1" name="01 會員註冊">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1392" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="01 會員註冊｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：尚未註冊會員&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="使用者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1312" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;註冊介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1312" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1312" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="開啟註冊頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="顯示註冊表單" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="填寫帳號、密碼及基本資料；送出" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="提交註冊資料並驗證" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="1170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="15" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="70" height="28" />
+        </mxCell>
+        <mxCell id="16" value="[欄位格式錯誤]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="520" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="17" value="標示錯誤欄位，要求重新輸入" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="592" />
+            <mxPoint as="targetPoint" x="670" y="592" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="標示錯誤欄位，要求重新輸入" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="656" />
+            <mxPoint as="targetPoint" x="170" y="656" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="704" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="20" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="704" width="70" height="28" />
+        </mxCell>
+        <mxCell id="21" value="[帳號已存在]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="708" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="22" value="提示帳號已被使用" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="780" />
+            <mxPoint as="targetPoint" x="670" y="780" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="提示帳號已被使用" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="844" />
+            <mxPoint as="targetPoint" x="170" y="844" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="建立會員資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="924" />
+            <mxPoint as="targetPoint" x="1170" y="952" />
+            <Array as="points">
+              <mxPoint x="1240" y="924" />
+              <mxPoint x="1240" y="952" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="976" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="26" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="976" width="70" height="28" />
+        </mxCell>
+        <mxCell id="27" value="[建立會員失敗]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="980" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="28" value="註冊失敗；不建立會員資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1052" />
+            <mxPoint as="targetPoint" x="670" y="1052" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="註冊失敗；不建立會員資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1116" />
+            <mxPoint as="targetPoint" x="170" y="1116" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="註冊成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1196" />
+            <mxPoint as="targetPoint" x="670" y="1196" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="顯示註冊成功並導向登入頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1260" />
+            <mxPoint as="targetPoint" x="170" y="1260" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-2" name="02 會員登入">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1372" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="02 會員登入｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：已具有有效帳號&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="使用者／管理者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;登入介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="開啟登入頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="顯示登入表單" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="輸入帳號、密碼並送出" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="驗證帳號及密碼" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="1170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="15" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="70" height="28" />
+        </mxCell>
+        <mxCell id="16" value="[帳號不存在或密碼錯誤]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="520" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="17" value="顯示登入失敗" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="592" />
+            <mxPoint as="targetPoint" x="670" y="592" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="顯示登入失敗" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="656" />
+            <mxPoint as="targetPoint" x="170" y="656" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="704" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="20" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="704" width="70" height="28" />
+        </mxCell>
+        <mxCell id="21" value="[帳號遭停權]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="708" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="22" value="拒絕登入並顯示停權訊息" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="780" />
+            <mxPoint as="targetPoint" x="670" y="780" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="拒絕登入並顯示停權訊息" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="844" />
+            <mxPoint as="targetPoint" x="170" y="844" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="建立登入狀態並判定角色" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="924" />
+            <mxPoint as="targetPoint" x="1170" y="952" />
+            <Array as="points">
+              <mxPoint x="1240" y="924" />
+              <mxPoint x="1240" y="952" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="登入成功及使用者角色" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1008" />
+            <mxPoint as="targetPoint" x="670" y="1008" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1040" width="1300" height="232" />
+        </mxCell>
+        <mxCell id="27" value="alt" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1040" width="70" height="28" />
+        </mxCell>
+        <mxCell id="28" value="[一般會員]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1044" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="29" value="導向會員頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1116" />
+            <mxPoint as="targetPoint" x="170" y="1116" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="50" y="1148" />
+            <mxPoint as="targetPoint" x="1350" y="1148" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="[管理者]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1152" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="32" value="導向管理頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1224" />
+            <mxPoint as="targetPoint" x="170" y="1224" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-3" name="03 管理會員資料－會員">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1248" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="03 管理會員資料－會員｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：會員已登入&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="會員" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1168" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;個人資料介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1168" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1168" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="開啟個人資料頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="取得目前會員資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="會員資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="顯示會員資料與可編輯欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="修改允許的欄位並送出" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="548" />
+            <mxPoint as="targetPoint" x="670" y="548" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="驗證並更新會員資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="612" />
+            <mxPoint as="targetPoint" x="1170" y="612" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="644" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="17" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="644" width="70" height="28" />
+        </mxCell>
+        <mxCell id="18" value="[資料格式錯誤]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="648" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="19" value="顯示錯誤欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="720" />
+            <mxPoint as="targetPoint" x="670" y="720" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="顯示錯誤欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="784" />
+            <mxPoint as="targetPoint" x="170" y="784" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="832" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="22" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="832" width="70" height="28" />
+        </mxCell>
+        <mxCell id="23" value="[更新失敗]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="836" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="24" value="操作失敗；保留原資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="908" />
+            <mxPoint as="targetPoint" x="670" y="908" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="操作失敗；保留原資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="972" />
+            <mxPoint as="targetPoint" x="170" y="972" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="更新成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1052" />
+            <mxPoint as="targetPoint" x="670" y="1052" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="顯示修改成功及更新後資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1116" />
+            <mxPoint as="targetPoint" x="170" y="1116" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-4" name="04 管理會員資料－管理者">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1692" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="04 管理會員資料－管理者｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：管理者已登入&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="管理者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1612" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;會員管理介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1612" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1612" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="進入會員管理頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="取得會員列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="會員列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="顯示會員列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="搜尋或選擇會員" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="548" />
+            <mxPoint as="targetPoint" x="670" y="548" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="查詢指定會員" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="612" />
+            <mxPoint as="targetPoint" x="1170" y="612" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="644" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="17" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="644" width="70" height="28" />
+        </mxCell>
+        <mxCell id="18" value="[會員不存在]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="648" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="19" value="顯示會員不存在" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="720" />
+            <mxPoint as="targetPoint" x="670" y="720" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="顯示會員不存在" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="784" />
+            <mxPoint as="targetPoint" x="170" y="784" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="會員詳細資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="864" />
+            <mxPoint as="targetPoint" x="670" y="864" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="顯示會員資料與狀態" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="928" />
+            <mxPoint as="targetPoint" x="170" y="928" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="修改會員資料或狀態並儲存" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="992" />
+            <mxPoint as="targetPoint" x="670" y="992" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="驗證並儲存修改" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1056" />
+            <mxPoint as="targetPoint" x="1170" y="1056" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1088" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="26" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1088" width="70" height="28" />
+        </mxCell>
+        <mxCell id="27" value="[資料格式錯誤]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1092" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="28" value="顯示錯誤欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1164" />
+            <mxPoint as="targetPoint" x="670" y="1164" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="顯示錯誤欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1228" />
+            <mxPoint as="targetPoint" x="170" y="1228" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1276" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="31" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1276" width="70" height="28" />
+        </mxCell>
+        <mxCell id="32" value="[儲存失敗]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1280" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="33" value="操作失敗；保留原資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1352" />
+            <mxPoint as="targetPoint" x="670" y="1352" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="操作失敗；保留原資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1416" />
+            <mxPoint as="targetPoint" x="170" y="1416" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="儲存成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1496" />
+            <mxPoint as="targetPoint" x="670" y="1496" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" value="顯示操作成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1560" />
+            <mxPoint as="targetPoint" x="170" y="1560" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-5" name="05 搜尋書籍">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1080" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="05 搜尋書籍｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：無&#10;空白搜尋採原文件允許的「顯示全部書籍」方案。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="使用者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1000" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;書籍搜尋介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1000" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1000" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="進入書籍搜尋頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="顯示搜尋欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="輸入書名或關鍵字；送出搜尋" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="452" width="1300" height="232" />
+        </mxCell>
+        <mxCell id="14" value="alt" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="452" width="70" height="28" />
+        </mxCell>
+        <mxCell id="15" value="[有輸入關鍵字]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="456" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="16" value="依關鍵字查詢書籍" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="528" />
+            <mxPoint as="targetPoint" x="1170" y="528" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="50" y="560" />
+            <mxPoint as="targetPoint" x="1350" y="560" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="[未輸入關鍵字]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="564" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="19" value="查詢全部書籍" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="636" />
+            <mxPoint as="targetPoint" x="1170" y="636" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="書籍查詢結果" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="716" />
+            <mxPoint as="targetPoint" x="670" y="716" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="748" width="1300" height="232" />
+        </mxCell>
+        <mxCell id="22" value="alt" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="748" width="70" height="28" />
+        </mxCell>
+        <mxCell id="23" value="[有符合條件的書籍]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="752" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="24" value="顯示書籍搜尋結果列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="824" />
+            <mxPoint as="targetPoint" x="170" y="824" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="50" y="856" />
+            <mxPoint as="targetPoint" x="1350" y="856" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="[無符合條件的書籍]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="860" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="27" value="顯示「查無符合條件的書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="932" />
+            <mxPoint as="targetPoint" x="170" y="932" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-6" name="06 查看書籍資訊">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="804" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="06 查看書籍資訊｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：書籍存在於系統中&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="使用者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="724" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;書籍資訊介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="724" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="724" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="從列表選擇書籍" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="依書籍 ID 查詢詳細資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="388" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="13" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="388" width="70" height="28" />
+        </mxCell>
+        <mxCell id="14" value="[書籍不存在]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="392" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="15" value="顯示「查無此書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="464" />
+            <mxPoint as="targetPoint" x="670" y="464" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="顯示「查無此書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="528" />
+            <mxPoint as="targetPoint" x="170" y="528" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="書籍資訊、可借閱數量及借閱狀態" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="608" />
+            <mxPoint as="targetPoint" x="670" y="608" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="顯示書籍詳細資料、可借閱數量及狀態" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="672" />
+            <mxPoint as="targetPoint" x="170" y="672" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-7" name="07 借閱書籍">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="2212" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="07 借閱書籍｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：已登入、帳號有效、書籍存在且有可借閱數量&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="會員" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="2132" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;書籍資訊／借閱確認介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="2132" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="2132" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="進入書籍資訊頁面並點選「借閱」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="檢查登入狀態、帳號狀態及可借閱數量" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="388" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="13" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="388" width="70" height="28" />
+        </mxCell>
+        <mxCell id="14" value="[尚未登入]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="392" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="15" value="導向登入頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="464" />
+            <mxPoint as="targetPoint" x="670" y="464" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="導向登入頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="528" />
+            <mxPoint as="targetPoint" x="170" y="528" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="576" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="18" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="576" width="70" height="28" />
+        </mxCell>
+        <mxCell id="19" value="[帳號無法借閱]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="580" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="20" value="拒絕借閱" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="652" />
+            <mxPoint as="targetPoint" x="670" y="652" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="拒絕借閱" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="716" />
+            <mxPoint as="targetPoint" x="170" y="716" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="764" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="23" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="764" width="70" height="28" />
+        </mxCell>
+        <mxCell id="24" value="[可借閱數量為 0]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="768" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="25" value="顯示「目前無可借閱書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="840" />
+            <mxPoint as="targetPoint" x="670" y="840" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="顯示「目前無可借閱書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="904" />
+            <mxPoint as="targetPoint" x="170" y="904" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="可借閱及借閱確認資訊" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="984" />
+            <mxPoint as="targetPoint" x="670" y="984" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="顯示借閱確認資訊" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1048" />
+            <mxPoint as="targetPoint" x="170" y="1048" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1080" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="30" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1080" width="70" height="28" />
+        </mxCell>
+        <mxCell id="31" value="[會員取消]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1084" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="32" value="取消借閱" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="1156" />
+            <mxPoint as="targetPoint" x="670" y="1156" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" value="結束確認；不修改任何資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1220" />
+            <mxPoint as="targetPoint" x="170" y="1220" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="確認借閱" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="1300" />
+            <mxPoint as="targetPoint" x="670" y="1300" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="提交借閱確認" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1364" />
+            <mxPoint as="targetPoint" x="1170" y="1364" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" value="同一交易：建立借閱紀錄、設定日期&#10;可借閱數量減少 1" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1428" />
+            <mxPoint as="targetPoint" x="1170" y="1456" />
+            <Array as="points">
+              <mxPoint x="1240" y="1428" />
+              <mxPoint x="1240" y="1456" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1480" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="38" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1480" width="70" height="28" />
+        </mxCell>
+        <mxCell id="39" value="[建立借閱失敗／交易失敗]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1484" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="40" value="回復交易；紀錄與數量維持原狀" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1556" />
+            <mxPoint as="targetPoint" x="670" y="1556" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="回復交易；紀錄與數量維持原狀" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1620" />
+            <mxPoint as="targetPoint" x="170" y="1620" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" value="提交交易；借閱成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1700" />
+            <mxPoint as="targetPoint" x="670" y="1700" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="顯示借閱成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1764" />
+            <mxPoint as="targetPoint" x="170" y="1764" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="44" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1796" width="1300" height="316" />
+        </mxCell>
+        <mxCell id="45" value="opt" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1796" width="70" height="28" />
+        </mxCell>
+        <mxCell id="46" value="[會員選擇查看紀錄]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1800" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="47" value="開啟「個人借閱」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="1872" />
+            <mxPoint as="targetPoint" x="670" y="1872" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="查詢會員借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1936" />
+            <mxPoint as="targetPoint" x="1170" y="1936" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49" value="借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="2000" />
+            <mxPoint as="targetPoint" x="670" y="2000" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="50" value="顯示本次借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="2064" />
+            <mxPoint as="targetPoint" x="170" y="2064" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-8" name="08 查看個人借閱">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1056" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="08 查看個人借閱｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：會員已登入&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="會員" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="976" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;個人借閱介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="976" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="976" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="點選「個人借閱」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="確認登入並取得目前會員 ID" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="388" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="13" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="388" width="70" height="28" />
+        </mxCell>
+        <mxCell id="14" value="[未登入]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="392" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="15" value="導向登入頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="464" />
+            <mxPoint as="targetPoint" x="670" y="464" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="導向登入頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="528" />
+            <mxPoint as="targetPoint" x="170" y="528" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="依目前會員 ID 查詢借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="608" />
+            <mxPoint as="targetPoint" x="1170" y="636" />
+            <Array as="points">
+              <mxPoint x="1240" y="608" />
+              <mxPoint x="1240" y="636" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="借閱紀錄查詢結果" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="692" />
+            <mxPoint as="targetPoint" x="670" y="692" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="724" width="1300" height="232" />
+        </mxCell>
+        <mxCell id="20" value="alt" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="724" width="70" height="28" />
+        </mxCell>
+        <mxCell id="21" value="[有借閱紀錄]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="728" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="22" value="顯示書籍、借閱日、應歸還日、&#10;實際歸還日及借閱狀態" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="800" />
+            <mxPoint as="targetPoint" x="170" y="800" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="50" y="832" />
+            <mxPoint as="targetPoint" x="1350" y="832" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="[無借閱紀錄]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="836" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="25" value="顯示「目前沒有借閱紀錄」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="908" />
+            <mxPoint as="targetPoint" x="170" y="908" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-9" name="09 辦理歸還">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1836" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="09 辦理歸還｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：管理者已登入；書籍有有效且尚未歸還的借閱紀錄&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="管理者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1756" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;歸還書籍介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1756" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1756" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="進入歸還書籍功能" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="顯示條碼輸入／掃描介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="掃描書籍條碼" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="依條碼查詢書籍及有效借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="1170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="15" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="70" height="28" />
+        </mxCell>
+        <mxCell id="16" value="[查無書籍]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="520" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="17" value="顯示「查無此書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="592" />
+            <mxPoint as="targetPoint" x="670" y="592" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="顯示「查無此書籍」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="656" />
+            <mxPoint as="targetPoint" x="170" y="656" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="704" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="20" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="704" width="70" height="28" />
+        </mxCell>
+        <mxCell id="21" value="[查無有效且未歸還紀錄]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="708" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="22" value="顯示「此書籍目前沒有借閱紀錄」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="780" />
+            <mxPoint as="targetPoint" x="670" y="780" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="顯示「此書籍目前沒有借閱紀錄」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="844" />
+            <mxPoint as="targetPoint" x="170" y="844" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="有效借閱資訊" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="924" />
+            <mxPoint as="targetPoint" x="670" y="924" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="顯示借閱資訊與歸還確認" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="988" />
+            <mxPoint as="targetPoint" x="170" y="988" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1020" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="27" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1020" width="70" height="28" />
+        </mxCell>
+        <mxCell id="28" value="[管理者取消]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1024" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="29" value="取消操作" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="1096" />
+            <mxPoint as="targetPoint" x="670" y="1096" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="結束確認；不修改任何資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1160" />
+            <mxPoint as="targetPoint" x="170" y="1160" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="確認歸還" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="1240" />
+            <mxPoint as="targetPoint" x="670" y="1240" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="提交歸還確認" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1304" />
+            <mxPoint as="targetPoint" x="1170" y="1304" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" value="同一交易：更新為已歸還、記錄歸還時間&#10;可借閱數量增加 1" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1368" />
+            <mxPoint as="targetPoint" x="1170" y="1396" />
+            <Array as="points">
+              <mxPoint x="1240" y="1368" />
+              <mxPoint x="1240" y="1396" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1420" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="35" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1420" width="70" height="28" />
+        </mxCell>
+        <mxCell id="36" value="[歸還處理失敗]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1424" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="37" value="回復交易；紀錄與數量不變；顯示歸還失敗" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1496" />
+            <mxPoint as="targetPoint" x="670" y="1496" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="38" value="回復交易；紀錄與數量不變；顯示歸還失敗" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1560" />
+            <mxPoint as="targetPoint" x="170" y="1560" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="提交交易；歸還成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1640" />
+            <mxPoint as="targetPoint" x="670" y="1640" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="40" value="顯示歸還成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1704" />
+            <mxPoint as="targetPoint" x="170" y="1704" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-10" name="10 管理書籍">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="2196" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="10 管理書籍｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：管理者已登入&#10;實線：操作／請求　虛線：回應／畫面呈現；break 條件成立即結束本次互動。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="管理者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="2116" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;書籍管理介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="2116" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="2116" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="進入書籍管理頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="取得書籍列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="書籍列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="顯示書籍列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="1300" height="488" />
+        </mxCell>
+        <mxCell id="15" value="alt" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="516" width="70" height="28" />
+        </mxCell>
+        <mxCell id="16" value="[新增書籍]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="520" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="17" value="選擇新增" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="592" />
+            <mxPoint as="targetPoint" x="670" y="592" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="顯示空白新增表單" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="656" />
+            <mxPoint as="targetPoint" x="170" y="656" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="50" y="688" />
+            <mxPoint as="targetPoint" x="1350" y="688" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="[修改書籍]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="692" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="21" value="選擇書籍並點選修改" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="764" />
+            <mxPoint as="targetPoint" x="670" y="764" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="取得所選書籍資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="828" />
+            <mxPoint as="targetPoint" x="1170" y="828" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="書籍資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="892" />
+            <mxPoint as="targetPoint" x="670" y="892" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="顯示已填入資料的修改表單" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="956" />
+            <mxPoint as="targetPoint" x="170" y="956" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="輸入／修改 ISBN、書名、作者、&#10;出版社及館藏數量；送出" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="1036" />
+            <mxPoint as="targetPoint" x="670" y="1036" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="提交資料及操作類型" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1100" />
+            <mxPoint as="targetPoint" x="1170" y="1100" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1132" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="28" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1132" width="70" height="28" />
+        </mxCell>
+        <mxCell id="29" value="[資料格式錯誤]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1136" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="30" value="顯示錯誤欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1208" />
+            <mxPoint as="targetPoint" x="670" y="1208" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="顯示錯誤欄位" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1272" />
+            <mxPoint as="targetPoint" x="170" y="1272" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1320" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="33" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1320" width="70" height="28" />
+        </mxCell>
+        <mxCell id="34" value="[新增且 ISBN 已存在]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1324" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="35" value="拒絕新增；提示 ISBN 重複" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1396" />
+            <mxPoint as="targetPoint" x="670" y="1396" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" value="拒絕新增；提示 ISBN 重複" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1460" />
+            <mxPoint as="targetPoint" x="170" y="1460" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1508" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="38" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1508" width="70" height="28" />
+        </mxCell>
+        <mxCell id="39" value="[修改且 ISBN 與其他書籍重複]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1512" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="40" value="拒絕修改" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1584" />
+            <mxPoint as="targetPoint" x="670" y="1584" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="拒絕修改" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1648" />
+            <mxPoint as="targetPoint" x="170" y="1648" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" value="依操作類型新增或更新書籍" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1728" />
+            <mxPoint as="targetPoint" x="1170" y="1756" />
+            <Array as="points">
+              <mxPoint x="1240" y="1728" />
+              <mxPoint x="1240" y="1756" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1780" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="44" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1780" width="70" height="28" />
+        </mxCell>
+        <mxCell id="45" value="[資料庫操作失敗]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1784" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="46" value="操作失敗；保留原資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1856" />
+            <mxPoint as="targetPoint" x="670" y="1856" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="47" value="操作失敗；保留原資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1920" />
+            <mxPoint as="targetPoint" x="170" y="1920" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="操作成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="2000" />
+            <mxPoint as="targetPoint" x="670" y="2000" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49" value="顯示操作成功" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="2064" />
+            <mxPoint as="targetPoint" x="170" y="2064" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ui-11" name="11 管理借閱">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1420" pageHeight="1504" arrows="1" connect="1" tooltips="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="11 管理借閱｜UI 循序圖" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontSize=25;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1300" height="45" />
+        </mxCell>
+        <mxCell id="3" value="前置條件：管理者已登入&#10;依原文件主要流程呈現查詢及明細，未增加未定義的修改功能。" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="70" width="1320" height="65" />
+        </mxCell>
+        <mxCell id="4" value="管理者" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="5" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="225" />
+            <mxPoint as="targetPoint" x="170" y="1424" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="«boundary»&#10;借閱管理介面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="7" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="225" />
+            <mxPoint as="targetPoint" x="670" y="1424" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="«control»&#10;圖書管理系統" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;rounded=0;whiteSpace=wrap;fillColor=#EAF2FB;strokeColor=#527CA6;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1020" y="155" width="300" height="70" />
+        </mxCell>
+        <mxCell id="9" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=none;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="225" />
+            <mxPoint as="targetPoint" x="1170" y="1424" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="進入借閱管理頁面" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="292" />
+            <mxPoint as="targetPoint" x="670" y="292" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="取得借閱紀錄列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="356" />
+            <mxPoint as="targetPoint" x="1170" y="356" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="借閱紀錄列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="420" />
+            <mxPoint as="targetPoint" x="670" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="顯示借閱紀錄列表" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="484" />
+            <mxPoint as="targetPoint" x="170" y="484" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="輸入會員、書籍或借閱狀態等搜尋條件" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="548" />
+            <mxPoint as="targetPoint" x="670" y="548" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="查詢符合條件的借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="612" />
+            <mxPoint as="targetPoint" x="1170" y="612" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="644" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="17" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="644" width="70" height="28" />
+        </mxCell>
+        <mxCell id="18" value="[查無符合條件的紀錄]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="648" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="19" value="顯示「查無符合條件的借閱紀錄」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="720" />
+            <mxPoint as="targetPoint" x="670" y="720" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="顯示「查無符合條件的借閱紀錄」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="784" />
+            <mxPoint as="targetPoint" x="170" y="784" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="搜尋結果" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="864" />
+            <mxPoint as="targetPoint" x="670" y="864" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="顯示搜尋結果" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="928" />
+            <mxPoint as="targetPoint" x="170" y="928" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="選擇借閱紀錄" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="992" />
+            <mxPoint as="targetPoint" x="670" y="992" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="取得所選借閱紀錄明細" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=block;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=0;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1056" />
+            <mxPoint as="targetPoint" x="1170" y="1056" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=none;strokeColor=#718399;strokeWidth=1.3;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1088" width="1300" height="188" />
+        </mxCell>
+        <mxCell id="26" value="break" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;fillColor=#E7EDF5;strokeColor=#718399;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="1088" width="70" height="28" />
+        </mxCell>
+        <mxCell id="27" value="[借閱紀錄不存在]" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;text;align=left;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135" y="1092" width="1180" height="32" />
+        </mxCell>
+        <mxCell id="28" value="顯示「借閱紀錄不存在」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1164" />
+            <mxPoint as="targetPoint" x="670" y="1164" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="顯示「借閱紀錄不存在」" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1228" />
+            <mxPoint as="targetPoint" x="170" y="1228" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="借閱詳細資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="1308" />
+            <mxPoint as="targetPoint" x="670" y="1308" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="顯示借閱詳細資料" style="html=0;fontFamily=Microsoft JhengHei;fontSize=15;fontColor=#23364D;endArrow=open;endFill=1;strokeColor=#466078;strokeWidth=1.4;dashed=1;labelBackgroundColor=#FFFFFF;verticalAlign=bottom;spacingBottom=7;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="670" y="1372" />
+            <mxPoint as="targetPoint" x="170" y="1372" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

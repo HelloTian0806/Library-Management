@@ -9,6 +9,15 @@ public class Member {
 	private String password;
 	private String phone;
 	private LocalDate createdAt;
+	private Role role;
+	
+	public Role getRole() {
+		return role;
+	}
+	
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
 	public Member() {
 
@@ -40,12 +49,29 @@ public class Member {
 	
 	
 
-	public Member(int id, String name, String email, String phone) {
+	public Member(int id, String name, String email, String phone, Role role) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
+		this.role = role;
+	}
+	
+	public Member(int id, String name, String email, String phone, LocalDate createAt, Role role) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.createdAt = createAt;
+		this.role = role;
+	}
+	
+	public Member(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
 	}
 
 	public int getId() {

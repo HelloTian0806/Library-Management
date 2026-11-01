@@ -107,7 +107,6 @@ public class BookDAO {
 	}
 
 	public List<Book> findAll() {
-		System.out.println("使用findAll功能");
 		String sql = "SELECT * FROM library_management.books";
 		List<Book> bookList = new ArrayList<Book>();
 
@@ -130,12 +129,11 @@ public class BookDAO {
 	public List<Book> findByTitle(String title) {
 		String sql = "SELECT * FROM books WHERE title LIKE ?";
 		List<Book> bookList = new ArrayList<Book>();
-		System.out.println("使用findByTitle功能");
+
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setString(1, "%" + title + "%");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				System.out.println("有資料讀取中");
 				Book book = new Book(rs.getInt("id"), rs.getString("isbn"), rs.getString("title"),
 						rs.getString("author"), rs.getString("publisher"), rs.getString("category"),
 						rs.getInt("total_quantity"), rs.getInt("available_quantity"));
@@ -151,7 +149,6 @@ public class BookDAO {
 	public Book findById(int bookId) {
 		String sql = "SELECT * FROM books WHERE id = ?";
 		Book book = null;
-		System.out.println("使用findById功能");
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			ResultSet rs = pstmt.executeQuery();
@@ -218,5 +215,24 @@ public class BookDAO {
 			int row = pstmt.executeUpdate();
 			return row > 0;
 		} 
+	}
+	
+	public int countBooks() {
+		String sql = """
+				SELECT count(*) FROM books
+				 """;
+		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("count(*)");
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 }
