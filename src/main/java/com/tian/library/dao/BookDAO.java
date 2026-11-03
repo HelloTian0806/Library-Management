@@ -153,7 +153,6 @@ public class BookDAO {
 			pstmt.setInt(1, bookId);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				System.out.println("有資料讀取中");
 				book = new Book(rs.getInt("id"), rs.getString("isbn"), rs.getString("title"), rs.getString("author"),
 						rs.getString("publisher"), rs.getString("category"), rs.getInt("total_quantity"),
 						rs.getInt("available_quantity"));

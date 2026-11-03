@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
+import com.tian.library.dto.AdminBorrowResponse;
 import com.tian.library.dto.BorrowResponse;
 import com.tian.library.entity.Borrow;
 import com.tian.library.entity.BorrowStatus;
@@ -113,18 +114,29 @@ public class BorrowDAO {
 		return borrowList;
 	}
 
-	public List<Borrow> findAll() {
+	public List<AdminBorrowResponse> findAll() {
 		String sql = """
-				SELECT * FROM borrows
+				SELECT br.id, br.member_id, m.name AS member_name,
+				b.title AS book_title,
+				br.borrow_date, br.due_date,
+				br.return_date, br.status
+				FROM borrows br
+				JOIN members m ON br.member_id = m.id
+				JOIN books b ON br.book_id = b.id
 				""";
-		List<Borrow> borrowList = new ArrayList<>();
+		List<AdminBorrowResponse> borrowList = new ArrayList<>();
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				java.sql.Date returnDate = rs.getDate("return_date");
-				Borrow borrow = new Borrow(rs.getInt("id"), rs.getInt("member_id"), rs.getInt("book_id"),
-						rs.getDate("borrow_date").toLocalDate(), rs.getDate("due_date").toLocalDate(),
+				AdminBorrowResponse borrow = new AdminBorrowResponse(
+						rs.getInt("id"),
+						rs.getInt("member_id"),
+						rs.getString("member_name"),
+						rs.getString("book_title"),
+						rs.getDate("borrow_date").toLocalDate(),
+						rs.getDate("due_date").toLocalDate(),
 						returnDate == null ? null : returnDate.toLocalDate(),
 						BorrowStatus.valueOf(rs.getString("status")));
 				
@@ -217,6 +229,19 @@ public class BorrowDAO {
 		}
 		
 		return 0;
+	}
+	
+	public BorrowStatus calculateStatus(AdminBorrowResponse borrowResponse) {
+		
+		if (borrowResponse.getStatus() == BorrowStatus.RETURNED) {
+			return BorrowStatus.RETURNED;
+		}
+		
+		if (LocalDate.now().isAfter(borrowResponse.getDueDate())) {
+			return BorrowStatus.OVERDUE;
+		}
+		
+		return BorrowStatus.BORROWED;
 	}
 	
 	public BorrowStatus calculateStatus(BorrowResponse borrowResponse) {

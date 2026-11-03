@@ -3,6 +3,7 @@ package com.tian.library.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -10,6 +11,7 @@ import javax.sql.DataSource;
 import org.springframework.stereotype.Service;
 
 import com.tian.library.dao.BorrowDAO;
+import com.tian.library.dto.AdminBorrowResponse;
 import com.tian.library.dto.BorrowResponse;
 import com.tian.library.entity.Book;
 import com.tian.library.entity.Borrow;
@@ -123,7 +125,7 @@ public class BorrowService {
 		return borrowDAO.findByMemberId(memberId);
 	}
 
-	public List<Borrow> findAll() {
+	public List<AdminBorrowResponse> findAll() {
 		return borrowDAO.findAll();
 	}
 
