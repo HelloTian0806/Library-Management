@@ -45,116 +45,177 @@ public class BorrowService {
 	}
 
 	/**
-	 * 確認會員與書籍存在，使用同一 Connection 扣庫存並新增借閱，將到期日設為借閱日後 14 天。
-	 * 目前忽略扣庫存的布林結果與新增筆數，因此沒有拋出例外不等於所有業務步驟都成功。
-	 * 會員與書籍查詢使用各自的連線，不屬於這裡手動開啟的 Transaction。
-	 * @param memberId 會員 ID
-	 * @param bookId 書籍 ID
-	 * @return 處理結果；目前 false 未細分驗證失敗、查無資料與部分資料存取失敗
-	 * @throws SQLException rollback 或 close 失敗時仍可能向外傳遞
+	 * 確認會員與書籍存在後，扣減庫存並新增借閱紀錄。
+	 *
+	 * <p>兩個寫入使用同一 Connection，只有全部成功才 commit；
+	 * 任一步驟失敗時，撤銷本次 Transaction 的寫入。
+	 *
+	 * @param memberId 後端驗證過的登入會員 ID
+	 * @param bookId 要借閱的書籍 ID
+	 * @return 成功為 true；會員不存在、書籍不存在、庫存不足
+	 *         或新增筆數不符合預期時為 false
+	 * @throws SQLException JDBC 操作、提交、回滾或關閉資源失敗
+	 * @throws RuntimeException 執行期錯誤；重新拋出前會嘗試 rollback
 	 */
 	public boolean add(int memberId, int bookId) throws SQLException {
-		// 寫入共用 Connection 才能一起提交或回滾；回傳 false 並不會自動觸發 rollback。
-		Connection conn = null;
 
-		try {
-			// 向連線池借用 Connection；finally 中 close 通常是歸還連線池。
-			conn = dataSource.getConnection();
-			// 停用每個 SQL 自動提交，讓後續寫入由同一 Transaction 控制。
-			conn.setAutoCommit(false);
+	    // try-with-resources 會在離開區塊時關閉 Connection。
+	    // 使用連線池時，close 通常表示將連線歸還連線池。
+	    try (Connection conn = dataSource.getConnection()) {
 
-			if (memberService.findById(memberId) == null) {
-				System.out.println("找不到ID");
-				return false;
-			}
+	        conn.setAutoCommit(false);
 
-			Book book = bookService.findById(bookId);
-			if (book == null) {
-				System.out.println("找不到書");
-				return false;
-			}
+	        try {
+	            // 這兩個查詢目前各自使用其他 Connection，
+	            // 只是事前檢查，不能保證資料之後不會被其他 Transaction 改動。
+	            if (memberService.findById(memberId) == null) {
+	                conn.rollback();
+	                return false;
+	            }
 
-			bookService.decAvailableQuantity(conn, bookId);
+	            Book book = bookService.findById(bookId);
 
-			LocalDate borrowDate = LocalDate.now();
+	            if (book == null) {
+	                conn.rollback();
+	                return false;
+	            }
 
-			Borrow borrow = new Borrow(memberId, bookId, borrowDate, borrowDate.plusDays(14), BorrowStatus.BORROWED);
-			borrowDAO.add(conn, borrow);
+	            // 必須使用同一 Connection，才能與新增借閱一起回滾。
+	            // 條件 UPDATE 影響零筆時不一定拋出例外，因此要檢查結果。
+	            boolean stockUpdated =
+	                    bookService.decAvailableQuantity(conn, bookId);
 
-			// 提交目前 Connection 的寫入；commit 本身不會驗證前面忽略的更新結果。
-			conn.commit();
-			return true;
-			// 借書攔截所有 Exception，印出堆疊並嘗試回滾，正常回滾後以 false 表示失敗。
-		} catch (Exception e) {
+	            if (!stockUpdated) {
+	                conn.rollback();
+	                return false;
+	            }
 
-			e.printStackTrace();
+	            LocalDate borrowDate = LocalDate.now();
 
-			if (conn != null) {
-				// 撤銷目前 Connection 尚未提交的寫入，不影響其他獨立連線的操作。
-				conn.rollback();
-			}
-			return false;
-		} finally {
+	            Borrow borrow = new Borrow(
+	                    memberId,
+	                    bookId,
+	                    borrowDate,
+	                    borrowDate.plusDays(14),
+	                    BorrowStatus.BORROWED
+	            );
 
-			if (conn != null) {
-				// 即使提早 return 或發生例外，finally 仍會執行以釋放 Connection。
-				conn.close();
-			}
-		}
+	            int insertedRows = borrowDAO.add(conn, borrow);
 
-	}
-	// 若未來改用 Spring 的 @Transactional，DAO 也必須透過能參與 Spring Transaction 的方式取得連線。
-	/**
-	 * 查詢借閱並排除已歸還狀態，使用同一 Connection 更新還書日期與可借數量。
-	 * 目前查詢使用另一條連線，且忽略更新結果；此流程沒有鎖定或以條件更新防止同時重複還書。
-	 * @param borrowId 借閱紀錄 ID，不是書籍 ID
-	 * @return 處理結果；目前 false 未細分驗證失敗、查無資料與部分資料存取失敗
-	 * @throws SQLException rollback 或 close 失敗時仍可能向外傳遞
-	 */
-	public boolean returnBook(int borrowId) throws SQLException {
-		
-		Connection conn = null;
+	            if (insertedRows != 1) {
+	                // 新增失敗時，也必須撤銷前面的庫存扣減。
+	                conn.rollback();
+	                return false;
+	            }
 
-		try {
-			// 向連線池借用 Connection；finally 中 close 通常是歸還連線池。
-			conn = dataSource.getConnection();
-			// 停用每個 SQL 自動提交，讓後續寫入由同一 Transaction 控制。
-			conn.setAutoCommit(false);
+	            conn.commit();
+	            return true;
 
-			Borrow borrow = findById(borrowId);
-			if (borrow == null) {
-				System.out.println("查無此書");
-				return false;
-			}
-
-			if (borrow.getStatus() == BorrowStatus.RETURNED) {
-				System.out.println("此書已經還了");
-				return false;
-			}
-
-			borrowDAO.returnBook(conn, borrowId, LocalDate.now());
-
-			bookService.increaseAvailableQuantity(conn, borrow.getBookId());
-			
-			// 提交目前 Connection 的寫入；commit 本身不會驗證前面忽略的更新結果。
-			conn.commit();
-			return true;
-			// 還書只攔截 SQLException；其他執行期例外不會進入這個 rollback 區塊。
-		} catch (SQLException e) {
-			e.printStackTrace();
-			if (conn != null) {
-				// 撤銷目前 Connection 尚未提交的寫入，不影響其他獨立連線的操作。
-				conn.rollback();
-			}
-			return false;
-		}finally {
-			
-	        if (conn != null) {
-	            // 即使提早 return 或發生例外，finally 仍會執行以釋放 Connection。
-	            conn.close();
+	        } catch (SQLException | RuntimeException e) {
+	            // 保留真正的失敗原因，交由上層統一處理。
+	            rollbackPreservingException(conn, e);
+	            throw e;
 	        }
-		}
+	    }
+	}
 
+	/**
+	 * 驗證借閱所有權後，更新還書狀態並增加可借數量。
+	 *
+	 * <p>必須由 DAO 使用同一 Connection 執行 SELECT ... FOR UPDATE。
+	 * 在支援列鎖的 InnoDB Transaction 中，鎖會持續至 commit 或 rollback，
+	 * 讓同一筆借閱的其他還書請求等待，避免同時通過狀態檢查。
+	 *
+	 * @param borrowId 要歸還的借閱紀錄 ID
+	 * @param memberId 後端驗證過的登入會員 ID，不接受前端自行指定
+	 * @return 成功為 true；查無紀錄、非本人、已歸還
+	 *         或更新筆數不符合預期時為 false
+	 * @throws SQLException JDBC 操作、提交、回滾或關閉資源失敗
+	 * @throws RuntimeException 執行期錯誤；重新拋出前會嘗試 rollback
+	 */
+	public boolean returnBook(int borrowId, int memberId)
+	        throws SQLException {
+
+	    try (Connection conn = dataSource.getConnection()) {
+
+	        conn.setAutoCommit(false);
+
+	        try {
+	            // DAO 必須使用傳入的 conn，不可自行另開 Connection，
+	            // 也不可在方法結束時關閉這個 Connection。
+	            Borrow borrow =
+	                    borrowDAO.findByIdForUpdate(conn, borrowId);
+
+	            if (borrow == null) {
+	                conn.rollback();
+	                return false;
+	            }
+
+	            // 保留目前政策：只有借閱者本人可以還書。
+	            // 此判斷必須在任何寫入之前執行。
+	            if (borrow.getMemberId() != memberId) {
+	                conn.rollback();
+	                return false;
+	            }
+
+	            // 鎖定後才檢查狀態。
+	            // 若前一個請求已完成還書，後一個請求應讀到 RETURNED。
+	            if (borrow.getStatus() == BorrowStatus.RETURNED) {
+	                conn.rollback();
+	                return false;
+	            }
+
+	            int updatedRows = borrowDAO.returnBook(
+	                    conn,
+	                    borrowId,
+	                    LocalDate.now()
+	            );
+
+	            if (updatedRows != 1) {
+	                conn.rollback();
+	                return false;
+	            }
+
+	            int bookUpdated =
+	                    bookService.increaseAvailableQuantity(
+	                            conn,
+	                            borrow.getBookId()
+	                    );
+
+	            if (bookUpdated != 1) {
+	                // 庫存沒有成功增加，就撤銷前面的還書更新。
+	                conn.rollback();
+	                return false;
+	            }
+
+	            conn.commit();
+	            return true;
+
+	        } catch (SQLException | RuntimeException e) {
+	            rollbackPreservingException(conn, e);
+	            throw e;
+	        }
+	    }
+	}
+
+	/**
+	 * 發生例外後嘗試回滾，同時保留原始錯誤。
+	 *
+	 * <p>如果 rollback 也失敗，將第二個錯誤附加到原始例外，
+	 * 避免只看見回滾錯誤，卻遺失最初的 SQL 或程式錯誤。
+	 *
+	 * @param conn 本次 Transaction 使用的 Connection
+	 * @param originalException 最初發生、稍後將重新拋出的例外
+	 */
+	private void rollbackPreservingException(
+	        Connection conn,
+	        Exception originalException) {
+
+	    try {
+	        conn.rollback();
+	    } catch (SQLException rollbackException) {
+	        originalException.addSuppressed(rollbackException);
+	    }
 	}
 
 	/**
@@ -181,6 +242,10 @@ public class BorrowService {
 	 */
 	public List<AdminBorrowResponse> findAll() {
 		return borrowDAO.findAll();
+	}
+	
+	public List<AdminBorrowResponse> findByMemberName(String name) {
+		return borrowDAO.findByMemberName(name);
 	}
 
 }

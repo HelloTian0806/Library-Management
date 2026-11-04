@@ -11,7 +11,7 @@ import com.tian.library.entity.Book;
 /**
  * 處理書籍欄位驗證、ISBN 重複檢查與庫存操作，透過 BookDAO 執行資料存取。
  * 借還書流程可傳入既有 Connection，讓庫存更新與借閱寫入共用 Transaction。
- * {@code @Service} 將此類別註冊為 Spring Bean，依賴由 constructor injection 提供。
+ * @Service 將此類別註冊為 Spring Bean，依賴由 constructor injection 提供。
  */
 @Service
 public class BookService {
@@ -149,7 +149,7 @@ public class BookService {
 	 */
 	public boolean decAvailableQuantity(int bookId) {
 		
-		return bookDAO.decAvailableQuantity(bookId);
+		return bookDAO.decAvailableQuantity(bookId) > 0;
 	}
 	/**
 	 * 委派 DAO 在可借數量大於零時扣減一冊，以條件更新避免扣成負數。
@@ -161,7 +161,7 @@ public class BookService {
 	 */
 	public boolean decAvailableQuantity(Connection conn, int bookId) throws SQLException {
 		
-		return bookDAO.decAvailableQuantity(conn, bookId);
+		return bookDAO.decAvailableQuantity(conn, bookId) > 0;
 	}
 	
 	/**
@@ -170,7 +170,7 @@ public class BookService {
 	 * @param bookId 書籍 ID
 	 * @return 更新至少一筆時為 true；條件不符合時為 false
 	 */
-	public boolean increaseAvailableQuantity(int bookId) {
+	public int increaseAvailableQuantity(int bookId) {
 		return bookDAO.increaseAvailableQuantity(bookId);
 	}
 	/**
@@ -181,7 +181,7 @@ public class BookService {
 	 * @return 更新至少一筆時為 true；條件不符合時為 false
 	 * @throws SQLException JDBC 操作失敗時向呼叫端傳遞
 	 */
-	public boolean increaseAvailableQuantity(Connection conn, int bookId) throws SQLException{
+	public int increaseAvailableQuantity(Connection conn, int bookId) throws SQLException{
 		return bookDAO.increaseAvailableQuantity(conn, bookId);
 	}
 }

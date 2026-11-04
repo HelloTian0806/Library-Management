@@ -15,8 +15,8 @@ import com.tian.library.entity.Book;
 
 /**
  * 以 JDBC 存取書籍資料，負責 SQL、參數綁定與 ResultSet 映射，供 Service 呼叫。
- * {@code @Repository} 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
- * PreparedStatement 的 ? 將資料與 SQL 結構分離，避免直接串接輸入造成 SQL injection；參數索引從 1 開始。
+ * @Repository 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
+ * PreparedStatement 使用 ? 作為參數佔位符，將資料與 SQL 結構分離，避免直接串接輸入造成 SQL injection；參數索引從 1 開始。
  * 自行取得 Connection 的方法用 try-with-resources 關閉資源；關閉 Statement 也會關閉其目前的 ResultSet。
  * 部分方法攔截 SQLException 後僅印出堆疊，因此零值、null 或空集合可能同時代表失敗，並非只有查無資料。
  */
@@ -217,7 +217,7 @@ public class BookDAO {
 	 * @param bookId 書籍 ID
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public boolean decAvailableQuantity(int bookId) {
+	public int decAvailableQuantity(int bookId) {
 		String sql = """
 				UPDATE books SET available_quantity = available_quantity-1 WHERE id = ? AND available_quantity > 0
 				""";
@@ -225,10 +225,10 @@ public class BookDAO {
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
-			return row > 0;
+			return row;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return 0;
 		}
 		
 	}
@@ -239,17 +239,16 @@ public class BookDAO {
 	 * 影響零筆可能是書籍不存在或已無庫存，呼叫端必須檢查結果才能決定後續借閱是否繼續。
 	 * @param conn 呼叫端持有的 Connection，本方法不提交、回滾或關閉它
 	 * @param bookId 書籍 ID
-	 * @return 影響筆數大於零時為 true，否則為 false
 	 * @throws SQLException JDBC 失敗時向外傳遞，讓呼叫端決定 rollback
 	 */
-	public boolean decAvailableQuantity(Connection conn, int bookId) throws SQLException {
+	public int decAvailableQuantity(Connection conn, int bookId) throws SQLException {
 		String sql = """
 				UPDATE books SET available_quantity = available_quantity-1 WHERE id = ? AND available_quantity > 0
 				""";
 		try(PreparedStatement ps = conn.prepareStatement(sql)){
 			ps.setInt(1, bookId);
 			
-			return ps.executeUpdate() > 0;
+			return ps.executeUpdate();
 		}
 		
 	}
@@ -259,17 +258,17 @@ public class BookDAO {
 	 * @param bookId 書籍 ID
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public boolean increaseAvailableQuantity(int bookId) {
+	public int increaseAvailableQuantity(int bookId) {
 		String sql = """
 				UPDATE books SET available_quantity = available_quantity + 1 WHERE id = ? AND available_quantity < total_quantity
 				""";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
-			return row > 0;
+			return row;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return 0;
 		}
 	}
 	/**
@@ -280,14 +279,14 @@ public class BookDAO {
 	 * @return 影響筆數大於零時為 true，否則為 false
 	 * @throws SQLException JDBC 失敗時向外傳遞，讓呼叫端決定 rollback
 	 */
-	public boolean increaseAvailableQuantity  (Connection conn, int bookId) throws SQLException {
+	public int increaseAvailableQuantity  (Connection conn, int bookId) throws SQLException {
 		String sql = """
 				UPDATE books SET available_quantity = available_quantity + 1 WHERE id = ? AND available_quantity < total_quantity
 				""";
 		try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
-			return row > 0;
+			return row;
 		} 
 	}
 	

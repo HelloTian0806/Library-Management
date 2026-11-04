@@ -124,11 +124,15 @@ public class UserMemberController {
 		// false 表示只取得既有 Session，沒有時回傳 null，不會為此建立新的 Session。
 		HttpSession session = httpRequest.getSession(false);
 		
-		if(session == null) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-		}
-		
-		Integer memberId = (Integer)session.getAttribute("memberId");
+	    if (session == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	    }
+
+	    Integer memberId = (Integer) session.getAttribute("memberId");
+
+	    if (memberId == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	    }
 		
 		Member member = memberService.findById(memberId);
 		

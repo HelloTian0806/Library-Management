@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.tian.library.entity.Member;
 /**
  * 以 JDBC 存取會員資料，負責 SQL、參數綁定與 ResultSet 映射，供 Service 呼叫。
- * {@code @Repository} 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
+ * @Repository 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
  * PreparedStatement 的 ? 將資料與 SQL 結構分離，避免直接串接輸入造成 SQL injection；參數索引從 1 開始。
  * 自行取得 Connection 的方法用 try-with-resources 關閉資源；關閉 Statement 也會關閉其目前的 ResultSet。
  * 部分方法攔截 SQLException 後僅印出堆疊，因此零值、null 或空集合可能同時代表失敗，並非只有查無資料。

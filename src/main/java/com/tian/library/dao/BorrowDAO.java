@@ -19,7 +19,7 @@ import com.tian.library.entity.BorrowStatus;
 
 /**
  * 以 JDBC 存取借閱資料，負責 SQL、參數綁定與 ResultSet 映射，供 Service 呼叫。
- * {@code @Repository} 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
+ * @Repository 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
  * PreparedStatement 的 ? 將資料與 SQL 結構分離，避免直接串接輸入造成 SQL injection；參數索引從 1 開始。
  * 自行取得 Connection 的方法用 try-with-resources 關閉資源；關閉 Statement 也會關閉其目前的 ResultSet。
  * 部分方法攔截 SQLException 後僅印出堆疊，因此零值、null 或空集合可能同時代表失敗，並非只有查無資料。
@@ -115,6 +115,34 @@ public class BorrowDAO {
 		return borrow;
 	}
 	
+	public Borrow findByIdForUpdate(Connection conn ,int borrowId) {
+		String sql = """
+				SELECT * FROM borrows WHERE id = ? FOR UPDATE
+				 """;
+		Borrow borrow = null;
+		try (PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setInt(1, borrowId);
+			// executeQuery 取得結果游標；必須先 next 才能讀第一筆，每次 next 移到下一筆。
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				// SQL NULL 表示尚未歸還，轉換 LocalDate 前必須先判斷 null。
+				java.sql.Date returnDate = rs.getDate("return_date");
+				borrow = new Borrow(rs.getInt("id"), rs.getInt("member_id"), rs.getInt("book_id"),
+						rs.getDate("borrow_date").toLocalDate(), rs.getDate("due_date").toLocalDate(),
+						returnDate == null ? null : returnDate.toLocalDate(),
+						BorrowStatus.valueOf(rs.getString("status")));
+				
+				borrow.setStatus(calculateStatus(borrow));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return borrow;
+	}
+	
+	
+	
+	
 	/**
 	 * 以會員 ID 篩選借閱並 JOIN books 取得書名，直接映射會員使用的 BorrowResponse。
 	 * 單次 JOIN 避免查出清單後再為每筆書籍各查一次的 N+1 查詢；呼叫者權限由上層判斷。
@@ -194,6 +222,46 @@ public class BorrowDAO {
 		}
 		return borrowList;
 	}
+	
+	public List<AdminBorrowResponse> findByMemberName(String name) {
+		String sql = """
+				SELECT br.id, br.member_id, m.name AS member_name,
+				b.title AS book_title,
+				br.borrow_date, br.due_date,
+				br.return_date, br.status
+				FROM borrows br
+				JOIN members m ON br.member_id = m.id
+				JOIN books b ON br.book_id = b.id
+				WHERE m.name LIKE ?
+				""";
+		List<AdminBorrowResponse> borrowList = new ArrayList<>();
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, "%"+name+"%");
+			
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				// SQL NULL 表示尚未歸還，轉換 LocalDate 前必須先判斷 null。
+				java.sql.Date returnDate = rs.getDate("return_date");
+				AdminBorrowResponse borrow = new AdminBorrowResponse(
+						rs.getInt("id"),
+						rs.getInt("member_id"),
+						rs.getString("member_name"),
+						rs.getString("book_title"),
+						rs.getDate("borrow_date").toLocalDate(),
+						rs.getDate("due_date").toLocalDate(),
+						returnDate == null ? null : returnDate.toLocalDate(),
+						BorrowStatus.valueOf(rs.getString("status")));
+				
+				borrow.setStatus(calculateStatus(borrow));
+				
+				borrowList.add(borrow);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return borrowList;
+	}
 
 	/**
 	 * 依借閱 ID 將指定狀態寫入資料庫，不同於查詢時只修改 Java 物件的 calculateStatus。
@@ -248,7 +316,7 @@ public class BorrowDAO {
 	 * @return 影響筆數大於零時為 true，否則為 false
 	 * @throws SQLException JDBC 失敗時向外傳遞，讓呼叫端決定 rollback
 	 */
-	public boolean returnBook(Connection conn, int borrowId, LocalDate returnDate) throws SQLException{
+	public int returnBook(Connection conn, int borrowId, LocalDate returnDate) throws SQLException{
 		String sql = """
 				UPDATE borrows SET status = ? , return_date = ? WHERE id = ?
 				""";
@@ -257,7 +325,7 @@ public class BorrowDAO {
 			pstmt.setDate(2, java.sql.Date.valueOf(returnDate));
 			pstmt.setInt(3, borrowId);
 			int row = pstmt.executeUpdate();
-			return row > 0;
+			return row;
 		}
 	}
 	

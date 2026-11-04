@@ -14,10 +14,9 @@ import com.tian.library.entity.Book;
 import com.tian.library.service.BookService;
 /**
  * 提供書籍查詢的 HTTP 入口，將搜尋條件委派給 BookService，後續由 DAO 存取資料。
- * {@code @RestController} 讓回傳物件經由訊息轉換器序列化為 JSON；{@code @RequestMapping} 定義共同路徑。
- * {@code @CrossOrigin} 指定前端來源的 CORS 規則，但不能取代登入驗證與角色授權。
+ * @RestController 讓回傳物件經由訊息轉換器序列化為 JSON；{@code @RequestMapping} 定義共同路徑。
  */
-@CrossOrigin(origins = "http://localhost:5173")
+
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -30,15 +29,7 @@ public class BookController {
 	public BookController (BookService bookService) {
 		this.bookService = bookService;
 	}
-	// 查詢全部
-	/**
-	 * 查詢全部書籍；若請求帶有 title 參數，Spring 會選擇較具體的另一個 mapping。
-	 * @return Service 提供的書籍 Entity 清單
-	 */
-	@GetMapping
-	public List<Book> findAll(){
-		return bookService.findAll();
-	}
+	
 	// 用書名查詢
 	/**
 	 * 將 query parameter 綁定為搜尋條件，實際查詢委派給 Service。
