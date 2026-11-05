@@ -18,13 +18,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * 提供管理者使用的儀表板統計入口。
+ * 提供管理者使用的儀表板統計 HTTP 入口。
  *
- * <p>先透過 Session 確認登入者，再查詢其角色；
- * 只有 ADMIN 可以取得統計資料。
+ * <p>{@code @RestController} 將回傳值作為回應內容；{@code @RequestMapping("admin/dashboard")}
+ * 定義的映射路徑為 /admin/dashboard，並非由 package 名稱推導。
+ * 在進入統計查詢前，先確認既有 Session、登入會員及資料庫中的 ADMIN 角色。
  *
- * <p>實際路徑為 /dashboard，與 package 名稱無關。
- * 統計 SQL 與資料彙整仍由 DashboardService 及 DAO 負責。
+ * <p>DashboardService 組合各 DAO 的統計結果，Controller 只處理授權及 HTTP 回應。
+ * 統計內容以 DashboardStatsResponse 封裝，避免讓前端分別呼叫多個資料存取方法。
  */
 @RestController
 @RequestMapping("admin/dashboard")
@@ -34,10 +35,10 @@ public class DashboardController {
     private final MemberService memberService;
 
     /**
-     * 透過 constructor injection 取得所需的 Service。
+     * 透過單一建構子取得 Spring 管理的服務，讓統計彙整與會員驗證保持各自職責。
      *
-     * @param dashboardService 彙整儀表板統計資料
-     * @param memberService 查詢登入者與角色
+     * @param dashboardService 組合書籍、會員與借閱統計的服務
+     * @param memberService 查詢登入者與目前角色的服務
      */
     public DashboardController(
             DashboardService dashboardService,
@@ -48,11 +49,15 @@ public class DashboardController {
     }
 
     /**
-     * 驗證管理者身分後取得統計資料。
+     * 處理 GET /admin/dashboard，通過管理者驗證後回傳統計 DTO。
      *
-     * @param httpRequest 用於取得既有登入 Session
-     * @return 未登入或查無登入會員為 401；
-     *         非 ADMIN 為 403；成功為 200 與統計 DTO
+     * <p>書籍總數目前是書目筆數，不是館藏冊數加總；逾期統計以未歸還且到期日早於今天判斷。
+     * 這些定義來自下層 SQL，Controller 不重新計算，也不將查詢失敗轉為零值回應。
+     * 各統計是獨立查詢，不能因為包在同一個 DTO 就視為同一時間點的資料庫快照。
+     *
+     * @param httpRequest 用於取得既有登入 Session 的請求
+     * @return 沒有 Session、memberId 或查無登入會員時為 401；非 ADMIN 為 403；成功為 200 與統計 DTO
+     * @throws SQLException 資料庫操作失敗時向外傳遞，由 GlobalExceptionHandler 記錄例外並回應 500
      */
     @GetMapping
     public ResponseEntity<DashboardStatsResponse> dashboardStats(

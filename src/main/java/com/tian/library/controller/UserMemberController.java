@@ -21,9 +21,15 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 /**
- * 提供註冊、登入、登出與登入者查詢，帳號驗證及密碼雜湊工作委派給 MemberService。 使用 Session 保存
- * memberId，登入成功與身分查詢以 UserResponse 限制對外欄位。 {@code @RestController}
- * 將回傳物件轉為回應內容，{@code @RequestMapping} 定義帳號 API 的共同路徑。
+ * 提供 /auth 下的註冊、登入、登出與目前登入者查詢。
+ *
+ * <p>{@code @RestController} 讓 Spring 管理此 Controller，並將方法回傳內容寫入 HTTP 回應；
+ * {@code @RequestMapping} 定義共同路徑。ResponseEntity 可同時指定狀態碼與回應本文，
+ * 物件通常轉為 JSON，字串回應則不應一概視為 JSON 物件。
+ *
+ * <p>Controller 管理 Session 與 HTTP 狀態，MemberService 負責帳號規則及密碼驗證。
+ * Request DTO 限定輸入欄位，UserResponse 明確挑選輸出欄位，避免直接序列化含密碼雜湊的 Member。
+ * 資料庫例外向外傳遞，由 GlobalExceptionHandler 統一處理。
  */
 @RestController
 @RequestMapping("/auth")
@@ -31,20 +37,24 @@ public class UserMemberController {
 	private final MemberService memberService;
 
 	/**
-	 * 透過 constructor injection 接收 Spring 提供的 Service，避免自行建立業務物件。
-	 * 
-	 * @param memberService 此 Controller 使用的業務 Service
+	 * 透過單一建構子注入會員服務，Spring 可自動提供對應 Bean，不需要自行 new。
+	 *
+	 * @param memberService 負責會員註冊、登入驗證及查詢的服務
 	 */
 	public UserMemberController(MemberService memberService) {
 		this.memberService = memberService;
 	}
 
 	/**
-	 * 驗證註冊資料後交給 Service 檢查 Email、雜湊密碼並新增會員。 {@code @Valid} 不通過時通常由 Spring 回應
-	 * 400，不會進入方法本體。
-	 * 
-	 * @param request 由 JSON 綁定並驗證的註冊 DTO
-	 * @return 成功為 201；Service 回傳 false 時一律為 409 與 Email 重複訊息，未區分其他寫入失敗原因
+	 * 處理 POST /auth/register，驗證輸入後交由 Service 註冊。
+	 *
+	 * <p>{@code @RequestBody} 將 JSON 綁定成 RegisterRequest；{@code @Valid} 依 DTO 上的
+	 * 非空、長度、Email 及手機格式限制驗證。驗證失敗通常為 400，且不會進入方法本體。
+	 * Service 負責檢查 Email 及雜湊密碼；這裡不自行組合 SQL，也不建立登入 Session。
+	 *
+	 * @param request 包含姓名、Email、原始密碼與手機的註冊 DTO
+	 * @return 成功為 201 與註冊成功文字；Service 回傳 false 時為 409 與 Email 已被註冊文字
+	 * @throws SQLException 資料庫操作失敗時向外傳遞，由 GlobalExceptionHandler 記錄例外並回應 500
 	 */
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody @Valid RegisterRequest request) throws SQLException {
@@ -61,12 +71,19 @@ public class UserMemberController {
 	}
 
 	/**
-	 * 驗證登入資料，成功後使舊 Session 失效並建立新 Session，降低 Session fixation 風險。 以 UserResponse
-	 * 輸出允許的欄位，不直接回傳驗證時使用的 Member。
-	 * 
-	 * @param request     包含 Email 與原始密碼的登入 DTO，密碼驗證由 Service 處理
-	 * @param httpRequest 用於取得、失效及建立 Session 的請求
-	 * @return 驗證失敗為 401 與相同錯誤訊息；成功為 200 與 UserResponse
+	 * 處理 POST /auth/login，驗證成功後重建 Session 並回傳允許公開的會員資料。
+	 *
+	 * <p>{@code @RequestBody} 與 {@code @Valid} 先進行輸入綁定及 DTO 驗證。
+	 * Service 找不到會員或密碼不符時都回傳 null，因此對外使用相同的 401 訊息。
+	 * 成功後先使舊 Session 失效，再建立新 Session，避免繼續沿用登入前的 Session 識別碼。
+	 *
+	 * <p>Session 的 memberId 保存在伺服器端，瀏覽器通常以 Cookie 攜帶 Session 識別碼。
+	 * 回應內的 role 供畫面使用，不能取代管理端 API 從資料庫查詢角色的授權檢查。
+	 *
+	 * @param request 包含 Email 與原始密碼的登入 DTO，密碼由 Service 比對
+	 * @param httpRequest 用於取得舊 Session、使其失效並建立新 Session 的請求
+	 * @return 驗證失敗為 401 與錯誤文字；成功為 200 與不含密碼的 UserResponse
+	 * @throws SQLException 資料庫操作失敗時向外傳遞，由 GlobalExceptionHandler 記錄例外並回應 500
 	 */
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody @Valid LoginRequest request, HttpServletRequest httpRequest)
@@ -98,10 +115,13 @@ public class UserMemberController {
 	}
 
 	/**
-	 * 使既有 Session 失效，移除登入資訊；沒有 Session 時也回傳成功。
-	 * 
-	 * @param httpRequest 用於取得既有 Session 的請求
-	 * @return 200 與登出成功訊息
+	 * 處理 POST /auth/logout，使既有 Session 失效以移除伺服器端登入狀態。
+	 *
+	 * <p>沒有 Session 時仍回傳成功，不會只為了登出建立新的 Session。
+	 * 這個方法不直接修改 Pinia；前端仍需在自己的狀態管理中更新登入畫面。
+	 *
+	 * @param httpRequest 用於取得既有 Session 的 HTTP 請求
+	 * @return 200 與登出成功文字，包含原本就沒有 Session 的情況
 	 */
 	@PostMapping("/logout")
 	public ResponseEntity<String> logout(HttpServletRequest httpRequest) {
@@ -115,12 +135,15 @@ public class UserMemberController {
 	}
 
 	/**
-	 * 以 Session 保存的會員 ID 重新查詢會員，並轉成不含密碼的 UserResponse。 目前沒有檢查既有 Session 中的 memberId
-	 * 是否為 null。
-	 * 
-	 * @param httpRequest 用於取得既有 Session 的請求
-	 * @return 沒有 Session 或查無會員時為 401；成功為 200 與 UserResponse
-	 * @throws NullPointerException memberId 為 null，呼叫接受 int 的 Service 方法時可能自動拆箱失敗
+	 * 處理 GET /auth/me，以 Session 中的 memberId 重新取得目前登入者資料。
+	 *
+	 * <p>依序確認 Session、memberId 與會員資料存在，任何一項不符合都回應 401。
+	 * memberId 在拆箱為 int 前已有 null 檢查；本方法不建立新的 Session。
+	 * 從資料庫重新查詢可取得目前會員資料，而不是直接信任前端保存的使用者物件。
+	 *
+	 * @param httpRequest 用於取得既有登入 Session 的請求
+	 * @return 沒有 Session、memberId 或查無會員時為 401 且沒有本文；成功為 200 與 UserResponse
+	 * @throws SQLException 資料庫操作失敗時向外傳遞，由 GlobalExceptionHandler 記錄例外並回應 500
 	 */
 	@GetMapping("/me")
 	public ResponseEntity<UserResponse> me(HttpServletRequest httpRequest) throws SQLException {

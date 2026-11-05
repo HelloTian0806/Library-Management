@@ -30,6 +30,10 @@ import jakarta.servlet.http.HttpSession;
  *
  * <p>
  * admin 路徑只是 API 分類，真正的授權由方法內的檢查執行。
+ *
+ * <p>{@code @RestController} 讓回傳內容寫入 HTTP 回應，{@code @RequestMapping} 定義共同路徑。
+ * ResponseEntity 同時指定狀態與本文；成功時的 DTO 清單通常序列化為 JSON。
+ * 資料庫例外向外傳遞，由 GlobalExceptionHandler 記錄並回應 500，不當成查無會員。
  */
 @RestController
 @RequestMapping("/admin/member")
@@ -53,7 +57,8 @@ public class AdminMemberController {
 	 * 若請求包含 name 參數，Spring 會優先選擇 {@code @GetMapping(params = "name")} 的姓名查詢方法。
 	 *
 	 * @param httpRequest 用於取得既有登入 Session
-	 * @return 未登入或查無登入會員時為 401；非 ADMIN 為 403； 通過檢查後為 200 與會員 DTO 清單
+	 * @return 沒有 Session、memberId 或查無登入會員時為 401；非 ADMIN 為 403； 通過檢查後為 200 與會員 DTO 清單
+	 * @throws SQLException 資料庫操作失敗時向外傳遞，由 GlobalExceptionHandler 記錄例外並回應 500
 	 */
 	@GetMapping
 	public ResponseEntity<List<MemberResponse>> findAll(HttpServletRequest httpRequest) throws SQLException {
@@ -104,11 +109,13 @@ public class AdminMemberController {
 	 *
 	 * <p>
 	 * {@code params = "name"} 要求請求具有 name 參數； {@code @RequestParam} 將該參數綁定至方法的
-	 * name。 這些 Annotation 本身不會檢查登入身分或角色。
+	 * name。這些 Annotation 本身不會檢查登入身分或角色。
+	 * 空字串仍符合參數存在的條件，實際搜尋交由 Service 與 DAO 執行。
 	 *
 	 * @param name        交給 Service 搜尋的姓名條件
 	 * @param httpRequest 用於取得既有登入 Session
-	 * @return 未登入或查無登入會員時為 401；非 ADMIN 為 403； 通過檢查後為 200 與符合條件的會員 DTO 清單
+	 * @return 沒有 Session、memberId 或查無登入會員時為 401；非 ADMIN 為 403； 通過檢查後為 200 與符合條件的會員 DTO 清單
+	 * @throws SQLException 資料庫操作失敗時向外傳遞，由 GlobalExceptionHandler 記錄例外並回應 500
 	 */
 	@GetMapping(params = "name")
 	public ResponseEntity<List<MemberResponse>> findByName(@RequestParam String name, HttpServletRequest httpRequest)
