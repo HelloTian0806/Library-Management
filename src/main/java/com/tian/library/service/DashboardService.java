@@ -1,5 +1,7 @@
 package com.tian.library.service;
 
+import java.sql.SQLException;
+
 import org.springframework.stereotype.Service;
 
 import com.tian.library.dao.BookDAO;
@@ -37,7 +39,7 @@ public class DashboardService {
 	 * DAO 某些查詢失敗時會回傳零，此處無法區分真正的零與查詢失敗。
 	 * @return 彙整四項數量的 DashboardStatsResponse
 	 */
-	public DashboardStatsResponse stats() {
+	public DashboardStatsResponse stats() throws SQLException{
 		 
 		int countBooks = bookDAO.countBooks();
 		int countMembers = memberDAO.countMembers();

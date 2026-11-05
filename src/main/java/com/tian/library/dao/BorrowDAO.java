@@ -41,7 +41,7 @@ public class BorrowDAO {
 	 * @param borrow 借閱 Entity
 	 * @return executeUpdate 的影響筆數；SQLException 被攔截時回傳 0
 	 */
-	public int add(Borrow borrow) {
+	public int add(Borrow borrow) throws SQLException{
 		String sql = """
 				INSERT INTO borrows (member_id, book_id, borrow_date, due_date,status) VALUES(?,?,?,?,?);
 				""";
@@ -53,10 +53,7 @@ public class BorrowDAO {
 			pstmt.setString(5, borrow.getStatus().name());
 			// executeUpdate 回傳影響筆數，並非新增資料的自動產生 ID。
 			return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
+		} 
 	}
 	
 	/**
@@ -90,7 +87,7 @@ public class BorrowDAO {
 	 * @param borrowId 借閱紀錄 ID
 	 * @return 找到的 Entity；查無資料或部分 SQL 失敗情況為 null
 	 */
-	public Borrow findById(int borrowId) {
+	public Borrow findById(int borrowId) throws SQLException{
 		String sql = """
 				SELECT * FROM borrows WHERE id = ?
 				 """;
@@ -109,13 +106,11 @@ public class BorrowDAO {
 				
 				borrow.setStatus(calculateStatus(borrow));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		return borrow;
 	}
 	
-	public Borrow findByIdForUpdate(Connection conn ,int borrowId) {
+	public Borrow findByIdForUpdate(Connection conn ,int borrowId) throws SQLException{
 		String sql = """
 				SELECT * FROM borrows WHERE id = ? FOR UPDATE
 				 """;
@@ -134,9 +129,8 @@ public class BorrowDAO {
 				
 				borrow.setStatus(calculateStatus(borrow));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
+		
 		return borrow;
 	}
 	
@@ -149,7 +143,7 @@ public class BorrowDAO {
 	 * @param memberId 會員 ID
 	 * @return 結果清單；查無資料為空集合，SQL 失敗時也可能回傳空或已映射的部分清單
 	 */
-	public List<BorrowResponse> findByMemberId(int memberId) {
+	public List<BorrowResponse> findByMemberId(int memberId) throws SQLException{
 		String sql = """
 				SELECT br.id, b.title as book_title, br.borrow_date, br.due_date, br.return_date, br.status
 				FROM borrows br JOIN books b ON br.book_id = b.id
@@ -175,9 +169,8 @@ public class BorrowDAO {
 				
 				borrowList.add(borrowResponse);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
+		
 		return borrowList;
 	}
 
@@ -186,7 +179,7 @@ public class BorrowDAO {
 	 * INNER JOIN 只會回傳能匹配兩側關聯資料的紀錄，且查詢沒有 ORDER BY 或分頁。
 	 * @return 結果清單；查無資料為空集合，SQL 失敗時也可能回傳空或已映射的部分清單
 	 */
-	public List<AdminBorrowResponse> findAll() {
+	public List<AdminBorrowResponse> findAll() throws SQLException{
 		String sql = """
 				SELECT br.id, br.member_id, m.name AS member_name,
 				b.title AS book_title,
@@ -217,13 +210,12 @@ public class BorrowDAO {
 				
 				borrowList.add(borrow);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
+		
 		return borrowList;
 	}
 	
-	public List<AdminBorrowResponse> findByMemberName(String name) {
+	public List<AdminBorrowResponse> findByMemberName (String name) throws SQLException {
 		String sql = """
 				SELECT br.id, br.member_id, m.name AS member_name,
 				b.title AS book_title,
@@ -257,9 +249,8 @@ public class BorrowDAO {
 				
 				borrowList.add(borrow);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
+		
 		return borrowList;
 	}
 
@@ -270,7 +261,7 @@ public class BorrowDAO {
 	 * @param status 要寫入的借閱狀態
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public boolean updateStatus(int borrowId, BorrowStatus status) {
+	public int updateStatus(int borrowId, BorrowStatus status) throws SQLException{
 		String sql = """
 				UPDATE borrows SET status = ? WHERE id = ?
 				""";
@@ -278,12 +269,9 @@ public class BorrowDAO {
 			pstmt.setString(1, status.name());
 			pstmt.setInt(2, borrowId);
 			int row = pstmt.executeUpdate();
-			return row >0;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			return row ;
+		} 
 		
-		return false;
 	}
 	/**
 	 * 單獨更新歸還日期，不會一併更新狀態或庫存，不能視為完整還書流程。
@@ -291,7 +279,7 @@ public class BorrowDAO {
 	 * @param returnDate 要寫入的歸還日期
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public boolean updateReturnDate(int borrowId, LocalDate returnDate) {
+	public int updateReturnDate(int borrowId, LocalDate returnDate) throws SQLException{
 		String sql = """
 				UPDATE borrows SET return_date = ? WHERE id = ?
 				""";
@@ -299,11 +287,8 @@ public class BorrowDAO {
 			pstmt.setDate(1, java.sql.Date.valueOf(returnDate));
 			pstmt.setInt(2, borrowId);
 			int row = pstmt.executeUpdate();
-			return row > 0;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
+			return row;
+		} 
 		
 	}
 	/**
@@ -333,7 +318,7 @@ public class BorrowDAO {
 	 * 以 return_date IS NULL 計算尚未歸還筆數，不限於資料庫的 BORROWED 狀態。
 	 * @return SQL 統計值；SQL 失敗或未取得結果時也回傳 0
 	 */
-	public int countActiveBorrows() {
+	public int countActiveBorrows() throws SQLException{
 		String sql = """
 				SELECT count(*) FROM borrows WHERE return_date IS NULL
 				 """;
@@ -345,23 +330,22 @@ public class BorrowDAO {
 				return rs.getInt("count(*)");
 			}
 			
-		}catch(SQLException e) {
-			e.printStackTrace();
 		}
 		
 		return 0;
 	}
 	
 	/**
-	 * 依資料庫字串 OVERDUED 統計；目前與 enum 的 OVERDUE 不一致。
 	 * 此查詢沒有依 due_date 計算，結果可能與查詢時動態算出的逾期清單不同。
 	 * @return SQL 統計值；SQL 失敗或未取得結果時也回傳 0
 	 */
-	public int countOverdueBorrows() {
+	public int countOverdueBorrows() throws SQLException{
 		String sql = """
-				SELECT count(*) FROM borrows WHERE status = "OVERDUED"
+				SELECT count(*) FROM borrows WHERE return_date IS NULL AND due_date < ?
 				 """;
 		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			pstmt.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
 			
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -369,10 +353,7 @@ public class BorrowDAO {
 				return rs.getInt("count(*)");
 			}
 			
-		}catch(SQLException e) {
-			e.printStackTrace();
 		}
-		
 		return 0;
 	}
 	

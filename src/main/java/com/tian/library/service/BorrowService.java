@@ -3,7 +3,6 @@ package com.tian.library.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -223,7 +222,7 @@ public class BorrowService {
 	 * @param borrowId 借閱紀錄 ID，不是書籍 ID
 	 * @return 找到的 Entity，查無資料時為 null
 	 */
-	public Borrow findById(int borrowId) {
+	public Borrow findById(int borrowId) throws SQLException{
 		return borrowDAO.findById(borrowId);
 	}
 	
@@ -232,7 +231,7 @@ public class BorrowService {
 	 * @param memberId 會員 ID
 	 * @return 符合條件的清單；查無結果時為空集合
 	 */
-	public List<BorrowResponse> findMemberById(int memberId) {
+	public List<BorrowResponse> findMemberById(int memberId) throws SQLException{
 		return borrowDAO.findByMemberId(memberId);
 	}
 
@@ -240,11 +239,11 @@ public class BorrowService {
 	 * 取得管理端借閱 DTO，書名與會員資料由 DAO 的 JOIN 查詢及映射提供。
 	 * @return 符合條件的清單；查無結果時為空集合
 	 */
-	public List<AdminBorrowResponse> findAll() {
+	public List<AdminBorrowResponse> findAll() throws SQLException{
 		return borrowDAO.findAll();
 	}
 	
-	public List<AdminBorrowResponse> findByMemberName(String name) {
+	public List<AdminBorrowResponse> findByMemberName(String name) throws SQLException{
 		return borrowDAO.findByMemberName(name);
 	}
 

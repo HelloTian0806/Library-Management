@@ -37,7 +37,7 @@ public class BookDAO {
 	 * @param book 要寫入的書籍 Entity
 	 * @return executeUpdate 的影響筆數；SQLException 被攔截時回傳 0
 	 */
-	public int add(Book book) {
+	public int add(Book book) throws SQLException{
 		String sql = """
 				INSERT INTO books
 				(isbn, title, author, publisher, category,
@@ -55,11 +55,8 @@ public class BookDAO {
 			pstmt.setInt(7, book.getAvailableQuantity());
 			// executeUpdate 回傳影響筆數，並非新增資料的自動產生 ID。
 			return pstmt.executeUpdate();
+		} 
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
 	}
 
 	/**
@@ -67,7 +64,7 @@ public class BookDAO {
 	 * @param book 要寫入的書籍 Entity
 	 * @return executeUpdate 的影響筆數；SQLException 被攔截時回傳 0
 	 */
-	public int updateBook(Book book) {
+	public int updateBook(Book book) throws SQLException{
 		String sql = """
 				UPDATE books
 				SET
@@ -87,10 +84,7 @@ public class BookDAO {
 			pstmt.setInt(6, book.getId());
 			return pstmt.executeUpdate();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
+		} 
 
 	}
 
@@ -99,7 +93,7 @@ public class BookDAO {
 	 * @param bookId 書籍 ID
 	 * @return executeUpdate 的影響筆數；SQLException 被攔截時回傳 0
 	 */
-	public int deleteBook(int bookId) {
+	public int deleteBook(int bookId) throws SQLException{
 		String sql = "DELETE FROM books WHERE id = ?";
 
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -107,11 +101,8 @@ public class BookDAO {
 
 			return pstmt.executeUpdate();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 
-		return 0;
 	}
 
 	/**
@@ -119,7 +110,7 @@ public class BookDAO {
 	 * @param isbn 要查詢的 ISBN
 	 * @return 找到的 Entity；查無資料或部分 SQL 失敗情況為 null
 	 */
-	public Book findByIsbn(String isbn) {
+	public Book findByIsbn(String isbn) throws SQLException{
 		String sql = "SELECT * FROM books WHERE isbn = ?";
 		Book book = null;
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -133,9 +124,7 @@ public class BookDAO {
 				return book;
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		return null;
 	}
 
@@ -143,7 +132,7 @@ public class BookDAO {
 	 * 取得全部書籍；SQL 明確使用 library_management schema，不會隨 datasource 的預設 schema 改變。
 	 * @return 結果清單；查無資料為空集合，SQL 失敗時也可能回傳空或已映射的部分清單
 	 */
-	public List<Book> findAll() {
+	public List<Book> findAll() throws SQLException{
 		String sql = "SELECT * FROM library_management.books";
 		List<Book> bookList = new ArrayList<Book>();
 
@@ -157,9 +146,7 @@ public class BookDAO {
 						rs.getInt("total_quantity"), rs.getInt("available_quantity"));
 				bookList.add(book);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		return bookList;
 	}
 
@@ -168,7 +155,7 @@ public class BookDAO {
 	 * @param title 書名搜尋條件
 	 * @return 結果清單；查無資料為空集合，SQL 失敗時也可能回傳空或已映射的部分清單
 	 */
-	public List<Book> findByTitle(String title) {
+	public List<Book> findByTitle(String title) throws SQLException{
 		String sql = "SELECT * FROM books WHERE title LIKE ?";
 		List<Book> bookList = new ArrayList<Book>();
 
@@ -182,9 +169,7 @@ public class BookDAO {
 				bookList.add(book);
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		return bookList;
 	}
 
@@ -193,7 +178,7 @@ public class BookDAO {
 	 * @param bookId 書籍 ID
 	 * @return 找到的 Entity；查無資料或部分 SQL 失敗情況為 null
 	 */
-	public Book findById(int bookId) {
+	public Book findById(int bookId) throws SQLException{
 		String sql = "SELECT * FROM books WHERE id = ?";
 		Book book = null;
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -205,9 +190,7 @@ public class BookDAO {
 						rs.getInt("available_quantity"));
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		return book;
 	}
 
@@ -217,7 +200,7 @@ public class BookDAO {
 	 * @param bookId 書籍 ID
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public int decAvailableQuantity(int bookId) {
+	public int decAvailableQuantity(int bookId) throws SQLException{
 		String sql = """
 				UPDATE books SET available_quantity = available_quantity-1 WHERE id = ? AND available_quantity > 0
 				""";
@@ -226,11 +209,7 @@ public class BookDAO {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
 			return row;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		}
-		
+		} 	
 	}
 	
 	/**
@@ -258,7 +237,7 @@ public class BookDAO {
 	 * @param bookId 書籍 ID
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public int increaseAvailableQuantity(int bookId) {
+	public int increaseAvailableQuantity(int bookId) throws SQLException{
 		String sql = """
 				UPDATE books SET available_quantity = available_quantity + 1 WHERE id = ? AND available_quantity < total_quantity
 				""";
@@ -266,10 +245,7 @@ public class BookDAO {
 			pstmt.setInt(1, bookId);
 			int row = pstmt.executeUpdate();
 			return row;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		}
+		} 
 	}
 	/**
 	 * 以條件 UPDATE 增加可借數量，避免超過館藏量；這個條件本身無法識別重複還書。
@@ -294,7 +270,7 @@ public class BookDAO {
 	 * 計算書目筆數，不是 total_quantity 加總，因此不代表實體館藏冊數。
 	 * @return SQL 統計值；SQL 失敗或未取得結果時也回傳 0
 	 */
-	public int countBooks() {
+	public int countBooks() throws SQLException{
 		String sql = """
 				SELECT count(*) FROM books
 				 """;
@@ -306,10 +282,7 @@ public class BookDAO {
 				return rs.getInt("count(*)");
 			}
 			
-		}catch(SQLException e) {
-			e.printStackTrace();
 		}
-		
 		return 0;
 	}
 }

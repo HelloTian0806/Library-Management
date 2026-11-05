@@ -48,7 +48,7 @@ public class BorrowController {
 	 * @return 缺少 memberId 時為 401；否則為 200 與 BorrowResponse 清單
 	 */
 	@GetMapping("/me")
-	public ResponseEntity<List<BorrowResponse>> findMemberById(HttpServletRequest httpRequest) {
+	public ResponseEntity<List<BorrowResponse>> findMemberById(HttpServletRequest httpRequest) throws SQLException{
 
 		HttpSession session = httpRequest.getSession(false);
 

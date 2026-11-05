@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.tian.library.entity.Role;
+
 import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
 import com.tian.library.entity.Member;
+import com.tian.library.entity.Role;
 /**
  * 以 JDBC 存取會員資料，負責 SQL、參數綁定與 ResultSet 映射，供 Service 呼叫。
  * @Repository 將 DAO 註冊為 Spring Bean，但不會自動替手寫 JDBC 開始 Transaction。
@@ -37,7 +38,7 @@ public class MemberDAO {
 	 * @param member 包含待寫入欄位的會員 Entity
 	 * @return executeUpdate 的影響筆數；SQLException 被攔截時回傳 0
 	 */
-	public int register(Member member) {
+	public int register(Member member) throws SQLException{
 
 		String sql = """
 				INSERT INTO members(name,email,password,phone,role)
@@ -49,18 +50,9 @@ public class MemberDAO {
 			pstmt.setString(2, member.getEmail());
 			pstmt.setString(3, member.getPassword());
 			pstmt.setString(4, member.getPhone());
-			int result = pstmt.executeUpdate();
-			if (result > 0) {
-				return result;
-			} else {
-				System.out.println("無法新增");
-				return 0;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
-
+			
+			return pstmt.executeUpdate();
+		} 
 	}
 	
 	/**
@@ -68,7 +60,7 @@ public class MemberDAO {
 	 * @param memberId 會員 ID
 	 * @return 找到的 Entity；查無資料或部分 SQL 失敗情況為 null
 	 */
-	public Member findById(int memberId) {
+	public Member findById(int memberId) throws SQLException{
 
 
 		String sql = """
@@ -92,9 +84,7 @@ public class MemberDAO {
 				member.setPhone(rs.getString("phone"));
 				member.setRole(Role.valueOf(rs.getString("role")));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 
 		return member;
 
@@ -107,7 +97,7 @@ public class MemberDAO {
 	 * @return 找到的會員，查無資料為 null
 	 * @throws IllegalStateException JDBC 查詢失敗時包裝 SQLException 並保留原因
 	 */
-	public Member findByEmail(String email) {
+	public Member findByEmail(String email) throws SQLException{
 		String sql = """
 				SELECT * FROM members WHERE email = ?
 				""";
@@ -132,10 +122,8 @@ public class MemberDAO {
 			
 			rs.close();
 			
-		}catch (SQLException e) {
-			throw new IllegalStateException("查詢會員Email失敗", e);
 		}
-		
+
 		return member;
 				
 	}
@@ -147,7 +135,7 @@ public class MemberDAO {
 	 * @return 結果清單；查無資料為空集合，SQL 失敗時也可能回傳空或已映射的部分清單
 	 * @throws NullPointerException created_at 為 SQL NULL 時，直接呼叫 toLocalDate 會失敗
 	 */
-	public List <Member> findByName(String name) {
+	public List <Member> findByName(String name) throws SQLException{
 
 
 		String sql = """
@@ -178,9 +166,7 @@ public class MemberDAO {
 			
 			rs.close();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 		
 		return memberList;
 
@@ -191,7 +177,7 @@ public class MemberDAO {
 	 * @return 結果清單；查無資料為空集合，SQL 失敗時也可能回傳空或已映射的部分清單
 	 * @throws NullPointerException created_at 為 SQL NULL 時，直接呼叫 toLocalDate 會失敗
 	 */
-	public List<Member> findAll() {
+	public List<Member> findAll() throws SQLException{
 
 
 		String sql = """
@@ -200,8 +186,10 @@ public class MemberDAO {
 
 		List<Member> memberList = new ArrayList<>();
 
-		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)){
-			ResultSet rs = pstmt.executeQuery();
+		try(Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery()){
+			
 			while(rs.next()) {
 				
 				Member member = new Member(
@@ -214,11 +202,6 @@ public class MemberDAO {
 						Role.valueOf(rs.getString("role")));
 				memberList.add(member);				
 			}
-			
-			rs.close();
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
 		}
 		
 		return memberList;
@@ -229,7 +212,7 @@ public class MemberDAO {
 	 * @param member 包含待寫入欄位的會員 Entity
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public boolean updateMember(Member member) {
+	public int updateMember(Member member) throws SQLException{
 
 		String sql = """
 				UPDATE members
@@ -246,14 +229,9 @@ public class MemberDAO {
 			
 			int rows = pstmt.executeUpdate();
 			
-			return rows > 0;
-		}catch (SQLException e) {
-			
-			e.printStackTrace();
-			
+			return rows;
 		}
 		
-		return false;
 	}
 
 	/**
@@ -261,7 +239,7 @@ public class MemberDAO {
 	 * @param memberId 會員 ID
 	 * @return 影響筆數大於零時為 true，否則為 false；SQLException 被攔截時也回傳 false
 	 */
-	public boolean deleteMember(int memberId) {
+	public int deleteMember(int memberId) throws SQLException{
 		
 		String sql = """
 				DELETE FROM members WHERE id = ?
@@ -273,37 +251,29 @@ public class MemberDAO {
 			
 			int rows = ptsmt.executeUpdate();
 			
-			return rows > 0;
-			
-		}catch (SQLException e) {
-			
-			e.printStackTrace();
+			return rows;
 			
 		}
-		
-		return false;
+
+
 	}
 	
 	/**
 	 * 計算所有會員筆數，SQL 沒有依角色或其他狀態篩選。
 	 * @return SQL 統計值；SQL 失敗或未取得結果時也回傳 0
 	 */
-	public int countMembers() {
-		String sql = """
-				SELECT count(*) FROM members
-				 """;
-		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)){
-			
-			ResultSet rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				return rs.getInt("count(*)");
-			}
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return 0;
+	public int countMembers() throws SQLException {
+	    String sql = "SELECT COUNT(*) AS total FROM members";
+
+	    try (Connection conn = dataSource.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(sql);
+	         ResultSet rs = pstmt.executeQuery()) {
+
+	        if (rs.next()) {
+	            return rs.getInt("total");
+	        }
+
+	        throw new SQLException("會員數統計未回傳結果列");
+	    }
 	}
 }

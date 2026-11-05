@@ -1,6 +1,6 @@
 package com.tian.library.controller.admin;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tian.library.dto.AdminBorrowResponse;
-import com.tian.library.dto.BorrowResponse;
-import com.tian.library.entity.Borrow;
 import com.tian.library.entity.Member;
 import com.tian.library.entity.Role;
 import com.tian.library.service.BorrowService;
@@ -50,7 +48,7 @@ public class AdminBorrowController {
 	 * @return Borrow Entity 清單，並非含書名與會員姓名的管理端 DTO
 	 */
 	@GetMapping
-	public ResponseEntity<List<AdminBorrowResponse>> findAll(HttpServletRequest httpRequest) {
+	public ResponseEntity<List<AdminBorrowResponse>> findAll(HttpServletRequest httpRequest) throws SQLException{
 
 		HttpSession session = httpRequest.getSession(false);
 
@@ -79,7 +77,7 @@ public class AdminBorrowController {
 
 	@GetMapping(params = "name")
 	public ResponseEntity<List<AdminBorrowResponse>> findByMemberName(@RequestParam String name,
-			HttpServletRequest httpRequest) {
+			HttpServletRequest httpRequest) throws SQLException{
 
 		HttpSession session = httpRequest.getSession(false);
 

@@ -1,5 +1,6 @@
 package com.tian.library.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,7 +38,7 @@ public class BookController {
 	 * @return 符合條件的書籍清單
 	 */
 	@GetMapping (params="title")
-	List<Book> findByTitle(@RequestParam String title){
+	List<Book> findByTitle(@RequestParam String title) throws SQLException{
 		return bookService.findByTitle(title);
 	}
 

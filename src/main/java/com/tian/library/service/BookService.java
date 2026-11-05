@@ -29,7 +29,7 @@ public class BookService {
 	 * @param book 欲新增或更新的書籍資料
 	 * @return 處理結果；目前 false 未細分驗證失敗、查無資料與部分資料存取失敗
 	 */
-	public boolean add(Book book) {
+	public boolean add(Book book) throws SQLException{
 		
 		if (book == null) {
 			return false;
@@ -63,7 +63,7 @@ public class BookService {
 	 * @param book 欲新增或更新的書籍資料
 	 * @return 處理結果；目前 false 未細分驗證失敗、查無資料與部分資料存取失敗
 	 */
-	public boolean update(Book book) {
+	public boolean update(Book book) throws SQLException{
 		
 		if(book == null) {
 			return false;
@@ -103,7 +103,7 @@ public class BookService {
 	 * @param bookId 書籍 ID
 	 * @return 處理結果；目前 false 未細分驗證失敗、查無資料與部分資料存取失敗
 	 */
-	public boolean delete(int bookId) {
+	public boolean delete(int bookId) throws SQLException{
 		return bookDAO.deleteBook(bookId) > 0;
 	}
 	
@@ -112,7 +112,7 @@ public class BookService {
 	 * @param title 書名搜尋條件
 	 * @return 符合條件的清單；查無結果時為空集合
 	 */
-	public List<Book> findByTitle(String title) {
+	public List<Book> findByTitle(String title) throws SQLException{
 		return bookDAO.findByTitle(title);
 	}
 	
@@ -121,14 +121,14 @@ public class BookService {
 	 * @param isbn 書籍 ISBN
 	 * @return 找到的 Entity，查無資料時為 null
 	 */
-	public Book findByIsbn(String isbn) {
+	public Book findByIsbn(String isbn) throws SQLException{
 		return bookDAO.findByIsbn(isbn);
 	}
 	/**
 	 * 取得全部書籍 Entity，尚未在此轉成 Response DTO。
 	 * @return 符合條件的清單；查無結果時為空集合
 	 */
-	public List<Book> findAll() {
+	public List<Book> findAll() throws SQLException{
 		return bookDAO.findAll();
 	}
 	
@@ -137,7 +137,7 @@ public class BookService {
 	 * @param bookId 書籍 ID
 	 * @return 找到的 Entity，查無資料時為 null
 	 */
-	public Book findById(int bookId) {
+	public Book findById(int bookId) throws SQLException{
 		return bookDAO.findById(bookId);
 	}
 	
@@ -147,7 +147,7 @@ public class BookService {
 	 * @param bookId 書籍 ID
 	 * @return 更新至少一筆時為 true；條件不符合時為 false
 	 */
-	public boolean decAvailableQuantity(int bookId) {
+	public boolean decAvailableQuantity(int bookId) throws SQLException{
 		
 		return bookDAO.decAvailableQuantity(bookId) > 0;
 	}
@@ -170,7 +170,7 @@ public class BookService {
 	 * @param bookId 書籍 ID
 	 * @return 更新至少一筆時為 true；條件不符合時為 false
 	 */
-	public int increaseAvailableQuantity(int bookId) {
+	public int increaseAvailableQuantity(int bookId) throws SQLException{
 		return bookDAO.increaseAvailableQuantity(bookId);
 	}
 	/**

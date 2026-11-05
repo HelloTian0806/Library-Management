@@ -1,5 +1,7 @@
 package com.tian.library.controller.admin;
 
+import java.sql.SQLException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,7 +56,7 @@ public class DashboardController {
      */
     @GetMapping
     public ResponseEntity<DashboardStatsResponse> dashboardStats(
-            HttpServletRequest httpRequest) {
+            HttpServletRequest httpRequest) throws SQLException{
 
         // 不為尚未登入的請求建立新 Session。
         HttpSession session = httpRequest.getSession(false);
